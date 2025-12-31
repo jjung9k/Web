@@ -1,0 +1,103 @@
+/* 모든 요소들의 기본 마진과 패딩 없애기 */
+* {
+    margin: 0px;
+    padding: 0px;
+
+    /* border: 1px dotted red; [개발할 때 많이 쓰는 요소- 블록 확인] */
+}
+
+/* 화면 벽에 너무 붙어 있는 것이 싫어서.. 여백 */
+body{
+    padding: 30px;
+    background-color: rgb(243, 184, 230);
+
+}
+
+/*  */
+header{
+    padding: 5px 5px;    
+}
+header img{width: 60px; height: 60px;
+}
+header a{text-decoration: none; color: black;}
+
+nav{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+nav ul{
+    list-style: none;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    text-align: start;
+}
+nav ul li{
+    display: inline;
+    margin-left: 2em;
+}
+nav ul li a{
+    text-decoration: none;
+    color: black;
+    line-height: 3em;
+}
+nav ul li a:hover{
+    text-decoration: underline;
+}
+
+/* 왼쪽 사이드 카테고리 영역 */
+#left{
+    float: left;
+    width: 10em;
+    margin-right: 1em;
+
+}
+#left ul{
+    list-style: none;
+}
+#left ul li{
+    background-color: #3f3f3f3f;
+    padding: 5px 10px;
+    border-bottom: 1px solid black;
+}
+#left ul li a{
+    color: white;
+    text-decoration: none;
+    display: block;     /* 블럭을 감쌀때 */
+}
+#left ul li :hover{
+    background-color: red;
+}
+
+#left h4{
+    padding: 5px 5px;
+}
+
+main{
+    float: left;
+    width: 460px;
+}
+main iframe{
+    width: 450px;
+    height: 500px;
+}
+/* 오른쪽 사이드 영역(aside) */
+#right{
+    float: right;
+    width: 12em;
+    padding: 10px;
+}
+#shopcart{
+    margin-bottom: 30px;
+}
+
+#login input{
+    margin-bottom: 5px;
+}
+footer{
+    clear: both;
+    background-color: #333333;
+    color: white;
+    padding: 1em 0em;
+    text-align: center;
+}

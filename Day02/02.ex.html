@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>연습</title>
+        <meta charset="UTF-8">    
+    </head>
+    <body>
+
+        <!-- 1. 오디오 [2019년 이후로 autoplay는 적용안 됨] -->
+         <audio src="./audio/old_pop.mp3" autoplay="autoplay" controls="controls">
+            브라우저가 audio 태그를 지원하지 않으면 보이는 글씨.
+         </audio>
+
+         <!-- 음원의 유형 중 브라우저에 따라 플레이가 안될 수도 있으서 여러형식을 등록 -->
+          <!-- 속성명="속성값"이 같으면 속성명만 써도 됨 -->
+        <audio autoplay controls>
+            <source src="./audio/old_pop.mp3" type="audio/mp3">  <!-- mime type(Mutilporpose internet mail extentions)--> 
+            <source src="./audio/old_pop.wav" type="audio/wav">
+            <source src="./audio/old_pop.ogg" type="audio/ogg">
+        </audio>
+
+        <hr>
+
+        <!-- 2. video  -->
+        <video controls="controls" width="300">
+            <source src="./video/movie.ogv" type="video/ogg">
+            브라우저가 video가 요소를 인식하지 못하면 보이는 글씨
+        </video>
+
+        <!-- muted 와 함께 autoplay 가능 -->
+        <video controls width="500" poster="./image/dog.png" autoplay muted>
+            <source src="./video/trailer.mp4" type="video/mp4">
+            <source src="./video/trailer.webm" type="video/webm">
+            <source src="./video/trailer.ogv" type="video/ogg">
+        </video>
+
+        <hr>
+        <!-- pdf와 같은 파일을 위해.. 사용하는 요소 -->
+        <embed src="./pdf/데이터 표기형식.pdf" type="application/pdf">
+        <!-- embed는 완전 예전 것이어서 모바일에서 열기가 안되는 이슈가 있음 -->
+
+        <object data="./pdf/데이터 표기형식.pdf" type="application/pdf"></object>
+        <object data="./pdf/데이터 표기형식.pdf" type="application/pdf" width="50%" height="300%"></object>
+
+        <!-- 현재는 ifrme 요소 사용을 권장 -->
+        <hr>
+        <!-- 4. iframe [inline frame - 다른 HTML 문서를 현재 문서 안에 그려내는 요소 ] -->
+        <iframe src="./01_table.html" frameborder="1"></iframe>
+        <iframe src="./01_table.html" frameborder="0"></iframe>
+
+        <!-- 프레임이 크면 스크롤은 그려지지 않음.. 그래서 마치 원래 그 HTML인 작성되어 있는 것처럼 보임 -->
+        <hr>
+        <iframe src="../01_ex.html" frameborder="0" height="200"></iframe>
+
+        <hr>
+        <!-- 다른 웹서버의 페이지도 열림. 단, javascript 로 페이지를 동적으로 그리는 웹문서는 안 그려질 수 있음  -->
+        <iframe src="http://www.google.com" frameborder="0"></iframe>
+        <iframe src="http://www.naver.com" frameborder="0"></iframe>
+        <iframe src="https://dshop.dietshin.com/main.asp" frameborder="0"></iframe>
+
+        <hr>
+
+        <!-- 하이퍼링크요소(anchor)를 이용하여 iframe에 특정 웹페이지가 열리게... -->
+        <iframe src="" frameborder="1" width="500" height="300" name="aaa"></iframe>
+        <a href="https://wwww.daum.net" target="aaa">다음 사이트 열기</a>
+
+        <hr>
+        <!-- embed or object >> iframe 으로 pdf 보여주는 것을 권장 -->
+        <iframe src="./pdf/데이터 표기형식.pdf" frameborder="0" width="100%" height="300" ></iframe>
+
+        <hr>
+
+        <!-- 5. 논리적 영역구분을 위한 요소 : div, span -->
+        <div style="background-color: yellow; border: 3px solid red; padding-left: 20px; ">
+            <h2>TITLE</h2>
+            <p>This is message</p>
+        </div>
+
+        <!-- <div>의 블럭요소 특징 -->
+        <p>
+            안녕하세요. 나는 <div style="color: blue;">홍길동</div> 입니다.
+
+        </p>
+        <!-- <span>의 인라인요소 특징 -->
+        <P>
+            안녕하세요. 나는 <span style="color: blue;">홍길동</span> 입니다.
+        </P>
+
+        <hr>
+        <!-- 이런 div의 영역구분 특징을 이용하여 웹페이지를 전체 레이아웃 영역을 구분할때 많이 사용됨 -->
+        <!-- 보통 웹페이지는 제목영역, 메뉴 영역, 본문영역, 하단영역 등로 구성 됨. -->
+        <!-- 웹페이지를 제작 작업을 할때.. 처음 작성하는 것이 div로 영역 만드는 것임[추후 css에서 자세히 수업 예정] -->
+        <div id="wrap">
+            <div id="header" style="border: 1px dotted black;"> HEADER</div>
+            <div id="nav" style="border: 1px dotted black; "> MENU</div>
+            <div id="main" style="border: 1px dotted black; height: 300px;"> MAIN CONTENT </div>
+            <div id="footer" style="border: 1px dotted black; ">FOOTER </div>
+        </div>
+
+
+
+    </body>
+</html> 

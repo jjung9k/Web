@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Web shop</title>
+        <meta charset="utf-8">
+
+        <!-- 외부 스타일시트 연결 -->
+        <link rel="stylesheet" href="./css/index.css">
+
+    </head>
+    <body>
+        
+        <header>
+            <h1>
+                <img src="./image/shop.png" alt="shop logo">
+                <a href="./index.html">WEB SHOP</a>
+            </h1>
+        </header>
+
+            <nav>
+                <ul>
+                    <li><a href="./index.html">HOME</a></li>
+                    <li><a href="./page/about.html">ABOUT US</a></li>
+                    <li><a href="./page/news.html">NEWS</a></li>
+                    <li><a href="./page/account.html">MY ACCOUNT</a></li>
+                    <li><a href="./page/contacts.html">CONTACT</a></li>
+                </ul>
+            </nav>
+
+            <aside id="left">
+                <h4>카테고리</h4>
+                <ul>
+                    <li><a href="./category/computer.html" target="products">컴퓨터</a></li>
+                    <li><a href="./category/clothing.html" target="products">의류</a></li>
+                    <li><a href="./category/music.html" target="products">음악</a></li>
+                    <li><a href="./category/movie.html" target="products">영화</a></li>
+                    <li><a href="./category/sports.html" target="products">스포츠/레저</a></li>
+                    <li><a href="./category/interier.html" target="products">가구/인테리어</a></li>
+                    <li><a href="./category/food.html" target="products">식품</a></li>
+                </ul>
+
+
+
+            </aside>
+            
+            <main>
+                <article>
+                    <iframe src="./category/computer.html" frameborder="0" name="products"></iframe>
+                </article>
+
+            </main>
+            
+            <aside id="right">
+                <div id="shopcart">
+                    <h4>Shopping Cart</h4>
+                    현재 쇼핑카트에 물품이 없습니다. <br>
+                    <a href="./subpage/shopcart/html">쇼핑카트 보기</a>
+                </div>
+
+                <div id="login">
+                    <h4>Log In</h4>
+                    <form action="./backend/login.php" method="post"></form>
+
+                    아이디 
+                    <input type="text"><br>
+                    패스워드
+                    <input type="password"><br>
+
+                    <input type="submit" value="로그인">
+                    <input type="reset" value="초기화"><br>
+
+                    <a href="./subpage/signup.html" target="_blank">회원가입</a>
+                    <a href="./subpage/forgot.html" target="비밀번호 분실">비밀번호 분실</a>             
+
+
+                </div>            
+            </aside>
+
+            <footer>
+                Copyright &copy; 2025 MBCA Web shop
+            </footer>
+        
+
+
+
+        
+    </body> 
+</html>

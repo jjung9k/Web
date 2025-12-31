@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>box model style</title>
+    <meta charset="utf-8">
+    <!-- 내부 스타일시트 -->
+    <style>
+        p.aa{
+            border-style: solid;  /* 선두께는 3px.. 색상은 black */
+            border-top-style: dotted;   /* 윗선만 점선으로 표기 */
+            /* 선 두께 */
+            border-width: medium;
+            border-bottom-width: 8px;
+            /* 선 색상 */
+            border-color: red;
+            border-right-color: #0000ff;
+
+            /* 모서리 둥글게 */
+            border-radius: 20px;
+            border-bottom-left-radius: 0px;
+            border-top-right-radius: 0px;
+
+            /* 경계선을 이미지로 (권장하지는 않음) */
+            /* 선 두께가 얇으면.. 그림이 너무 작게 그려짐 */
+            border: 30px solid transparent;   /* 축약형 */
+            
+            border-image: url("./image/border.png");
+            border-image-slice: 30 30;  /* 높이 너비 (그림을 9조각) */
+            border-image-repeat: stretch;   /* default */
+            border-image-repeat: round;
+
+            /* 요소 크기 지정 스타일 지정(요소의 크기는 ) */
+            width: 70%;
+            height: 300px;
+            margin-left: 15%;
+            /* 요소를 가운데 정렬할때.. 왼쪽 마진을 계산하는 것이 번거롭고 용이하지 않을 수 있음. */
+            /* 요소를 가운데 정렬할때 사용하기 좋은 자동 마진 */
+            margin-left: auto;
+            margin-right: auto;
+            margin: 0 auto;
+        }
+
+        /* 인라인 요소에 너비를 지정해 보기! 안됨. */
+        a{width: 300px; background-color: aqua;}
+        em{width: 100%; background-color: antiquewhite;}
+
+        /* 인라인 요소중에 너비가 조절되는 요소들(inline-block ) */
+        img{width: 500px; border: 1px solid black;}
+        input{width: 100%;}
+
+        /* 블럭요소는 공간이 옆에 있어도 다른 요소가 오지 않음 */
+        #p1{border: 1px solid black; width: 200px;}
+        #p2{border: 1px solid black; width: 200px;}
+
+    </style>
+
+</head>
+<body>
+    <!-- 경계선 스타일링 -->
+    <p class="aa">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae in ex, facilis tenetur repellat culpa eius iusto ipsam sapiente eum ducimus aliquid quis consectetur animi asperiores. Doloremque atque commodi error.
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio unde adipisci laudantium error, odio ullam ea eius, architecto hic soluta assumenda corporis quibusdam reiciendis! Veniam dolorem saepe sint blanditiis earum.
+    </p>
+    <hr>
+    
+    <!-- 2. 요소의 크기 스타일 속성 (block요소만 사이즈가 조절됨. 인라인은 안 됨) -->
+    <!-- 인라인 요소 사용 -->
+    <a href="">Google</a>
+    <em>nice to meet you</em>
+
+    <!-- 인라인 요소 중에서 너비가 조절되는 요소가 존재함.  -->
+    <img src="./image/image.png" alt="image">
+    <input type="text">
+
+    <!-- 블럭요소의 너비가 작아져서 옆에 공간이 있어도 다른 요소들은 옆에 놓여지지 않음 -->
+    <p id="p1">Hello </p>
+    <p id="p2">Nice </p>
+
+    <hr>
+    <!-- margin:auto 값은 블럭요소만 가능함 -->
+    <strong>WEB</strong>
+    <style>
+        strong{border: 1px solid red; margin-left: auto;}
+    </style>
+
+    <hr>
+
+    <!-- margin을 사용할때 주의점은 margin은 겹쳐진다.(음수 마진을 있으면 .....)-->
+    <div class="margin">
+        <p id="p3">p3</p>
+        <p id="p4">p4</p>
+
+
+    </div>
+    <style>
+        .margin{
+            border: 3px solid black;
+        }
+
+        #p3{background-color: red; margin: 0px;}
+        #p4{background-color: green; margin: 0px; margin-top: -10px; width:50%}
+
+    </style>
+
+    <hr>
+    <!-- 3. 배경 색상, 이미지 -->
+    <p class="bg">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea mollitia nesciunt dolor inventore esse deserunt, iusto est ut optio quidem quaerat repellendus non, ipsam velit. Laudantium aliquam magni corrupti recusandae?
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur placeat, beatae molestiae recusandae corporis repellendus modi et adipisci obcaecati porro magni iste ex nesciunt maxime rerum tempore quam quasi! Repudiandae!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi sit omnis veniam ipsam voluptates sed ab in non molestiae, nulla corporis quidem ipsa natus mollitia dolorem voluptatibus. Assumenda, saepe nemo!
+    </p>
+       
+    <style>
+        .bg{
+            background-color: antiquewhite;
+            background-image: url("./image/image.png");
+            background-size: 200px 100px; /* 너비 높이 */
+            background-repeat: repeat;
+            background-repeat: repeat-x;
+            background-repeat: repeat-y;
+            background-repeat: no-repeat;
+
+            background-position: center;
+            background-position: top right;
+            background-position: center bottom;
+        }        
+    </style>
+    
+    <!-- 배경 이미지가 요소에 어떻게 붙어 있는지 속성 -->
+    <p class="attach">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, qui expedita deleniti atque sapiente sint repellat similique maiores corrupti tempore, perspiciatis voluptas eos dolores minima illo. Officia omnis voluptate aut.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, soluta id aliquid earum rem esse delectus, possimus saepe provident neque voluptatem similique illo obcaecati corporis sapiente non consequatur, eligendi reiciendis.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, error corrupti et placeat autem neque esse voluptatum deserunt aperiam quidem dolorum sunt, velit nihil itaque, aspernatur illum magnam reprehenderit. Voluptate.
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni unde et asperiores eligendi illum, accusamus assumenda. Placeat, impedit minus tenetur consequuntur unde sed reiciendis sit, aliquam ab rem porro odio!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto tenetur, deserunt dolores blanditiis reiciendis suscipit numquam non? Voluptatum non nisi recusandae eaque nulla, libero neque optio porro, dignissimos itaque mollitia!
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi, rerum! Odio, eos dicta porro sunt mollitia quidem vel delectus numquam culpa et laborum doloribus! Modi distinctio eaque mollitia aperiam maxime?
+    </p>
+
+    <style>
+
+        p.attach{
+            border: 1px solid black;
+            width: 60%;
+            height: 300px;
+            overflow: scroll;
+            margin-left: auto;
+            margin-right: auto;
+
+            background-image: url(./image/image.png);
+            background-size: 200px 100px;
+            background-repeat: no-repeat;
+            background-position: center;
+
+            background-attachment: scroll; /* 요소가 스크롤 되면 같이 스크롤 */ 
+            background-attachment: local;  /* 콘텐츠의 배경이 됨 */
+            background-attachment: fixed;   /* 웹 브라우저 body영역을 기준으로 위치함. */
+            }
+
+    </style>
+            
+
+    </body>
+</html>

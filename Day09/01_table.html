@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Table style</title>
+        <meta charset="utf-8">
+
+        <style>
+            table{
+                border: 2px solid black;
+                border-collapse: collapse;
+                width: 100%; 
+                text-align: center;
+                /* 표 제목의 기본 위치는 무조건 상단.. 하단으로 하려면 아래 참조 */
+                caption-side: bottom;
+            }
+            th, td{
+                border: 1px solid black;
+                padding: 10px 5px;
+            }
+            th{
+                background-color: orange;
+                color: white;
+            }
+            td:nth-child(3){    
+                text-align: left;
+            }
+            th:first-child{
+                width: 4em;
+            }
+            tr:nth-child(2n+1){ /* n: 0,1,2,3, 4,.... */
+                background-color: #eeeeee;
+            }
+            tr:hover{
+                background-color: #333333;
+                color: white;                
+
+            }
+
+            /* table 스타일 작업 중 자식 선택자(>)를 사용할때 주의할 점 */
+            table>:nth-child(1){ border: 5px solid blue;} /* 테이블의 자식 중 첫째 요소 */
+            /* 직접 작성하지 않아도 실제 table 안에 첫번째 자식은 tbody 요소가 됨. (개발자 모드 F12에서 확인 가능)*/ 
+
+            /* table의 tr 요소를 선택하려면 자손 선택자를 권장 */
+            table tr{color: aqua;}
+            table>tr {color: red;}  /* 이 요소는 적용이 안됨. Table의 자식 중 tr은 없음 */
+            
+
+        </style>
+    </head>
+    <body>
+        <table>
+            <caption>표 제목 </caption>
+            <tr>
+                <th>번호</th>  <!-- <th>-> 테이블 헤드의 약자 --> 
+                <th>이름</th>
+                <th>이메일</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>홍길동</td>
+                <td>hong@naver.com</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>김철수</td>
+                <td>kim@naver.com</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>이영희</td>
+                <td>lee@naver.com</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>손흥민</td>
+                <td>son@naver.com</td>
+            </tr>
+
+        </table>
+
+
+
+    </body>
+
+</html>

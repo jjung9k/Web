@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js example</title>
+
+    <!-- body 안에 작성했던 HTML 작성을 JS언어를 이용하여 구현할 수 있음 -->
+
+    <!-- 외부 스크립트 -->
+    <script src="./01_ex.js"></script>
+    
+    <!-- html 문서 안에 JS를 작성하는 방법: 내부 스크립트  -->
+    <!-- 브라우저가 JS언어를 통역(interprete)해서 실행하는 프로그램 코드 작성 영역 -->
+    <script>
+        // 이 script 영역안에서 JS언어의 문법 체계를 따름
+        // 화면(body)에 글씨 출력
+        document.write("Hello JavaScript!");
+           
+        //줄바꿈이 자동으로 되지는 않음 
+        document.write('nice to meet you');
+
+        // 줄바꿈 하려면 브라우저가 줄바꿈으로 인식하는 요소를 써야 함. 
+        document.write('<br>');
+        document.write('good year.');
+
+        // 문자열안에 HTML의 태그문을 작성하면 브라우저가 해독해서 그려줌
+        document.write('<h4>HEADING</h4>');
+        document.write('<a href="https://naver.com">naver</a>');
+        document.write('<br>');
+        document.write("<a href='https://naver.com'>naver</a>");
+
+        document.write('<hr>');
+
+        // 숫자 데이터도 출력할 수 있음
+        document.write(10);
+        document.write('<br>');
+        // js는 프로그래밍 언어이기에 연산이 가능함
+        document.write(3+5);
+        document.write('<br>');
+        document.write('3+5');
+        document.write('<br>');
+        document.write('aa' + 'bb');  //문자열에 + 연산은 결합연산
+        document.write('<br>');
+        document.write(100 + 'aa'); // 숫자+문자열을 결합하면 자동으로 숫자를 문자열로 변환하여 결합
+        document.write('<br>');
+
+        //데이터를 보관하는 변수도 만들 수 있음
+        var a= 100;
+        document.write(a);
+        document.write('<br>');
+        document.write('a');
+        document.write('<br>');
+
+        var b= 'sam';
+        document.write(b);
+        document.write('<br>');
+
+        var c= new Date();
+        document.write(c);
+        document.write('<br>');
+
+        for(var i=0; i<10; i++){
+            document.write('Hello : ' + i + "<br>");
+        }
+        document.write('<hr>');
+
+        // JS는 이벤트를 처리하는 작업에 활용
+        function aaa(){
+            // alert('clicked button');
+
+        // body 영역을 모두 생성한 후에 다시 ducument.write()를 하면 화면을 모두 지우고 작성함.
+        // document.write('clicked!!!!!!');  
+
+        // 버튼 클릭했을때 버튼 아래에 글씨가 보여지게 하고 싶다면..
+        // 새롭게 요소를 만들거나 글씨를 보여주는 요소를 찾아와서 그 안에 글씨를 써야 함
+        var p= document.getElementById('pp');
+        p.innerHTML= 'clicked button!!';
+        }
+    </script>
+
+    <script>
+        document.write('<hr>');
+        // JS버전업에 의해 모던한 언어의 특징처럼 ; 을 안 써도 됨
+        document.write('nice')
+        document.write('good')
+        document.write('bad')
+    </script>
+    
+</head>
+<body>
+
+    <!-- 인라인 스크립트 -->
+    <button onclick="aaa()" onmouseover="document.getElementById('pp').innerHTML='mouse over'">눌러 주세요</button>
+    <p id="pp"></p>
+
+   <script>
+    document.write('이제 그만.');
+   </script>
+
+   <script src="./01_ex.js"></script>
+
+
+</body>
+</html>

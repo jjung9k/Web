@@ -1,0 +1,9 @@
+.product{
+    width: 200px;
+    float: left;
+}
+
+.product img{
+     width: 100px;
+    height: 100px;
+}

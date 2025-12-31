@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>media query</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- media query : 반응형 웹을 위한 CSS의 선택적용 기법 [desttop용, tablet용, phone용 ]-->
+
+    <!-- 방법1. @media 키워드 사용 -->
+    <style>
+
+    /* 디바이스의 너비마다다르게 CSS를 적용하기 */
+    /* 크리가 작은 것부터 CSS를 적용하는 것을 권장 */
+    #aa{
+        width: 320px;
+        height: 100px;
+        background-color: green;
+    }
+    /* 너비가 560px 이상이면 적용될 CSS 스타일 */
+    @media(min-width: 560px){
+        #aa{
+            width: 560px;
+            height: 150px;
+            background-color: yellow; 
+        }
+    }
+    </style>
+
+    <!-- 방법2. media 속성 사용 -->
+    <!-- 외부스타일 시트를 선택 적용 -->
+    <link rel="stylesheet" href="./02_media.css" media="(min-width:680px) and (max-width:800px)">
+
+    <!-- 내부 스타일 시트를 선택 적용 -->
+    <style type="text/css" media="(min-width: 800px)">
+        #aa{
+            width: 800px;
+            height: 250px;
+            background-color: aqua;
+        }
+    </style>
+
+    </head>
+    <body>
+        <div id="aa"></div>
+
+    </body>
+</html>

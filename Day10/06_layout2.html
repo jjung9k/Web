@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>layout 2</title>
+        <meta charset="utf-8">
+
+        <style>
+
+            header{
+                background-color: yellow;
+                color: black;
+                margin: 0px;
+                text-align: center;
+                padding: 5px;
+            }
+
+            nav{
+                display: table-cell; /* 테이블의 한 칸처럼 구조를 만들어주는 속성값 */
+                background-color: aquamarine;
+                padding: 15px;
+            }
+
+            nav figure img{
+                width: 85px;
+                height: 85px;
+            }
+            
+            main{
+                display: table-cell;
+                background-color: azure;
+                padding: 15px;
+            }
+                   
+            footer{
+                background-color: black;
+                color: white;
+                text-align: center;
+                padding: 10px;
+            }
+
+        </style>
+    </head>
+    <body>
+        
+        <!-- 레이아웃 구조부터 사용 [의미적인 semantic tag 사용 권장] .div 와 같은 기능의 요소임 -->
+        <header>
+            <h2>Sementic Tag Layout</h2>
+        </header>
+        <nav>
+            <h3>Links</h3>
+            <ul>
+                <li><a href="">google</a></li>
+                <li><a href="">naver</a></li>
+                <li><a href="">daum</a></li>
+            </ul>
+            <figure>
+                <img src="./image/pome.png" alt="pome">
+                <figcaption>pome</figcaption>
+            </figure>
+        </nav>
+        <main>
+            <section>
+                <article>
+                    <h4>TITLE1</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias tenetur eum qui saepe quam commodi ratione accusantium in mollitia praesentium adipisci amet minima, reprehenderit, vero repudiandae ut nobis magnam quisquam.</p>
+                </article>
+
+                <article>
+                    <h4>TITLE2</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias tenetur eum qui saepe quam commodi ratione accusantium in mollitia praesentium adipisci amet minima, reprehenderit, vero repudiandae ut nobis magnam quisquam.</p>
+                </article>
+            </section>
+        </main>
+        <footer>
+            Copyright &copy; MBCA 2025
+        </footer>
+
+
+    </body>
+</html>

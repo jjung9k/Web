@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>transition style 2</title>
+        <meta charset="utf-8">
+        <style>
+        div.aa img{
+            background-color: blue;
+            width: 200px;
+            height: 100px;
+
+            /* 전환 효과 */
+            transition: width 3s, height 3s, background-color 3s;
+
+        }
+
+        div.aa img:hover{
+            width: 300px;
+            height: 150px;
+            background-color: yellow;
+
+            transform: rotate(30deg);
+            transform: translate(100px, 0px);
+            
+            /* 다중 변환 */
+            transform: rotate(30deg) scale(1.2, 1.2) translate(80px, 0px);
+
+        }
+        </style>
+    </head>
+    <body>
+        
+        <div class="aa">
+            <img src="./image/lion.png" alt="lion">
+            <img src="./image/pome.png" alt="pome">
+        </div>
+
+    </body>
+</html>

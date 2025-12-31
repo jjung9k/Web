@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS function</title>
+</head>
+<body>
+
+    <!-- 1. CSS에서 변수 생성 및 사용 -->
+    <h1>TITLE</h1>
+    <p>This is message</p>
+    <style>
+        :root{ /* 최상위 요소를 지칭하는 가상 클래스 [현재 문서는 html 요소] */
+            /* 최상위 요소의 하위요소들에서 모두 사용가능한 변수를 새롭게 선언 */
+            /* 값을 저장하는 변수를 선언할 때는 반드시 앞에 -- 가 필요함 */
+            --main-color: #EEFFEE;
+            --main-text-color: #330127;
+            --second-text-color: gray;            
+        }
+
+        body{
+            background-color: var(--main-color);
+        }
+        h1{color: var(--main-text-color);}
+        p{color: var(--second-text-color);}
+
+    </style>
+    <h3>sub title</h3>
+    <style>
+        h3{color: var(--main-text-color);}
+    </style>
+    <hr>
+
+    <!-- 2. calc() - 계산하는 기능 -->
+    <div>Hello world</div>
+    <style>
+        div{
+            border: 2px solid blue;
+            width: calc(100% - 80px);
+        }
+    </style>
+    <hr>
+
+    <!-- 3. min(), max() : 값 중에서 작은것, 큰 것으로 알아서 적용 -->
+    <h4>This is Heading</h4>
+    <style>
+        h4{
+            border: 3px dashed blue;
+            width: min(100%, 600px);     /* 둘 중에서작은 것으로 적용 */
+        }
+    </style>
+    <hr>
+
+    <!-- 4.filter : 필터효과를 주는 속성(속성값이 모두 함수 임) -->
+    <div>
+        <p>
+            <img src="./image/gp01.jpg" alt="good picture">
+        </p>
+        <p>
+            <img src="./image/gp01.jpg" alt="good picture" class="aa">
+            <img src="./image/gp01.jpg" alt="good picture" class="bb">
+            <img src="./image/gp01.jpg" alt="good picture" class="cc">
+            <img src="./image/gp01.jpg" alt="good picture" class="dd">
+            <img src="./image/gp01.jpg" alt="good picture" class="ee">
+            <img src="./image/gp01.jpg" alt="good picture" class="ff">
+            <img src="./image/gp01.jpg" alt="good picture" class="gg">
+            <img src="./image/gp01.jpg" alt="good picture" class="hh">
+            <img src="./image/gp01.jpg" alt="good picture" class="ii">
+            <img src="./image/gp01.jpg" alt="good picture" class="jj">
+        </p>
+    </div>
+    <style>
+        div img{width: 100px; height: 100px; border-radius: 50px; overflow: hidden; margin: 1em;}
+
+        .aa{filter: blur(3px);}
+        .bb{filter: brightness(2);}
+        .cc{filter: contrast(200%);}
+        .dd{filter: drop-shadow(8px 8px 5px black);}
+        .ee{filter: grayscale(100%);}
+        .ff{filter: invert(100%);}
+        .gg{filter: sepia(100%);}
+        .hh{filter: opacity(50%);}
+        .ii{filter: hue-rotate(90deg);}
+        .jj{filter: saturate(200%);}
+    </style>
+
+</body>
+</html>

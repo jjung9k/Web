@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>layout style ex</title>
+    <meta charset="utf-8">
+
+    <style>
+        /*display 속성*/
+        /* 블럭요소를 인라인 요소로 변경해 보기 */
+        #p1{display: inline; width: 300px;}  /* 인라인요소는 size 변경 안됨 */
+            /* 인라인의 특징이면서 block 요소처럼 사이즈를 조절하고 싶다면 */
+        #p1{ display: inline-block; width: 200px;}
+
+        /* 인라인 요소를 블럭요소로 변경 */
+        strong.aa{display: block;}
+
+        /* display:none 블럭을 안 보이게 할 때 - 화면에 그려지지 않음 */
+        #ss{display: none;}
+
+    </style>
+</head>
+<body>
+    
+    <!-- 1. display 속성 연습 -->
+    <p id="p1">Hello world</p>   <!-- 블럭 요소-->
+    <a href="">naver</a>         <!-- 인라인 요소-->
+    <strong class="aa">good morning</strong>
+
+    <hr>
+
+    <!-- dispaly:none -->
+     <ul>
+        <li>aa</li>
+        <li id="ss">bb</li>
+        <li>cc</li>
+     </ul>
+
+    <hr>
+
+    <!-- 블럭요소와 인라인 요소를 같이 사용할때 고려할 것들 -->
+
+    <!-- 1) 블럭요소 안에 인라인 요소가 있는 경우 -->
+    <div style="background-color: tomato; border: solid; padding: 5px;">Nice <em>aaaa</em> world</div>
+
+    <!-- 2) 블럭요소 안에 다른 블럭요소가 있는 경우 -->
+    <div style="background-color: aqua; border: solid; padding: 5px;">Nice <p>aaaa</p> world</div>
+
+    <!-- 3) p 요소 안에 p요소가 또 있다면? 사용 안됨. -->
+    <p style="background-color: yellow; border: solid; padding: 5px;">Nice <p>aaaa</p> world</p>
+
+    <!-- 4) h1 요소안에 h1 요소가 또 있다면? 사용 안됨. -->
+    <h1 style="background-color: yellow; border: solid; padding: 5px;">Nice <h1>aaaa</h1> world</h1>
+
+    <!-- 5) 같은 블럭요소안에 같은 블록요소가 있으면 감싸는 구조가 이상해짐. 단. div는 예외이다. 사용가능 -->
+    <div style="background-color: lightcoral; border: solid; padding: 5px;">Nice <div>aaaa</div> world</div>
+
+    <!-- 6) 인라인요소 안에 블럭요소를 넣으면?? 아주 이상하게 갈라짐. -->
+    <span style="background-color: lightsalmon; border: solid; padding: 5px;">Nice <p>aaaa</p> world</span>
+
+    <!-- 인라인요소는 자식요소를 가지지 않는 것이 좋음. 단, anchor요소는 제외이다. -->
+
+    <hr>
+
+     <!-- 요소의 위치(position)을 지정하는 4가지 포지셔닝 속성값 알아보기 -->
+    <div class="aaa">
+        <p id="a">block #1</p>
+        <p id="b">block #2</p>
+        <p id="c">block #3</p>
+    </div>
+    <style>
+
+        div.aaa{
+            background-color: black;
+            position: relative;
+        }
+
+
+        #a{
+
+            background-color: cyan;
+            width: 200px;
+            height: 50px;
+
+        }
+        #b{
+            /* Position 속성을 이용하여 놓여지는 위치 결정 */
+            position: static;   /* default - 원래 놓여져야 할 위치에 배치 */
+            position: relative; /* 원래 놓여야 할 위치를 기준으로 상대적 좌표로 배치 */
+            position: absolute; /* 절대좌표 : 웹문서의 상단좌측을 기준으로 위치지정 속성으로 배치  */
+            position: fixed;    /* 고정좌표 : 웹브라우저의 좌상단을 기준으로 위치지정 속성으로 배치 */
+
+            /* relative position 부터는 위치지정 속성(top, bottom, left, right) 사용 가능 */
+            /* left: 50px; */
+            /* margin-left: 50px; /* 같이 왼쪽으로 밀려나는 속성 */
+            /* margin-top: 50px;  /* 같이 윗쪽으로 밀려나는 속성 */ 
+            /* top: 30px; */
+            right: 10px;
+            bottom: 10px;
+
+
+
+
+            background-color: yellow;
+            width: 200px;
+            height: 50px;
+        }
+        #c{
+            background-color: lightgreen;
+            width: 200px;
+            height: 50px;
+        }
+
+    </style>
+
+
+</body>
+</html>

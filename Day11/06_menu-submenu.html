@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sub ment</title>
+
+    <style>
+        *{padding: 0; margin: 0;}
+        ul{list-style: none;}
+
+        nav{
+            height: 50px;
+            background-color: lightgreen;
+
+        }
+
+        nav ul.menu>li{
+            border: 1px solid blue;
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 10px;
+        }
+
+        nav ul.submenu{
+            display: none;
+            position: absolute;            
+        }
+
+        nav li.nav_item:hover .submenu{
+            display: block;            
+        }
+
+</style>
+</head>
+<body>
+    
+    <nav>
+        <ul class="menu">
+            <li class="nav_item">
+                Home
+                <ul class="submenu">
+                    <li>111</li>
+                    <li>111</li>
+                    <li>111</li>
+                </ul>
+            </li>
+            <li class="nav_item">
+                SERVICE
+                <ul class="submenu">
+                    <li>222</li>
+                    <li>222</li>
+                    <li>222</li>
+                </ul>          
+            </li>
+            <li class="nav_item">
+                CONTACT
+                <ul class="submenu">
+                    <li>333</li>
+                    <li>333</li>
+                    <li>333</li>
+                </ul>
+            </li >
+        </ul>
+    </nav>
+</body>
+</html>

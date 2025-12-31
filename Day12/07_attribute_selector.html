@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>attribute selector</title>
+</head>
+
+<body>
+
+    <ul>
+        <li><a href="" target="_blank">naver</a></li>
+        <li><a href="" target="_self">google</a></li>
+        <li><a href="" target="_self">daum</a></li>
+    </ul>
+    <style>
+        a[target='_blank'] {
+            padding-right: 20px;
+            background-image: url('./icon/tab.png');
+            background-repeat: no-repeat;
+            background-position: right;
+            background-size: 14px;
+        }
+    </style>
+
+    <hr>
+    <!-- input요소 중에서 type이 인 요소 중에서 check된 요소를 선택하기 -->
+    <input type="text"><br>
+    <input type="datetime-local"><br>
+
+    <input type="radio" id="rb1" value="korea" name="nation" checked>
+    <label for="rb1">한국</label>
+    <input type="radio" id="rb2" value="china" name="nation">
+    <label for="rb2">중국</label>
+    <input type="radio" id="rb3" value="japan" name="nation">
+    <label for="rb3">일본</label>
+    <style>
+        input[type='radio']:checked+label {    /*radio 버튼 중에서 선택된 요소의 인접한 다음   */
+            font-weight: bold;
+            color: blue;
+        }
+    </style>
+
+    <hr>
+    <!-- 속성의 값이 특정 글씨로 시작하는 요소 선택 [title속성 - 마우스 올리면 나타나는 툴팁]-->
+    <a href="https://www.naver.com" title="naver">네이버</a>
+    <a href="" title="google">구글</a>
+    <a href="" title="daum">다음</a>
+
+    <a href="./aaa.hwp">한글문서</a>
+    <style>
+        a[title^='na']{color: green;}
+        a[title^='og']{color: blue}
+        /* 어떤 값으로 끝나는 요소 선택 */
+        a[titile$='um']{color: aqua;}
+        a[href$='hwp']{font-weight: bold; color: blueviolet;}
+        /* 특정글씨를 포함하고만 있으면 선택 */
+        a[title*='og']{color: brown;}
+    </style>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>게시판 연습</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    
+
+    <h1>자유 게시판</h1>
+    <p>자유롭게 글씨를 남겨 보세요</p>
+
+    <!-- 사용자의 글씨를 입력받아 서버벡앤드 프로그램(php)에 데이터를 보내주는 요소 -->
+    <form action="./save_data.php" method="post" enctype="multipart/form-data">    <!--첨부파일에 파일을 보낼때는 enctype="multipart/form-data"-->
+        <p>
+            <label for="in1">글 제목 :</label>
+            <input type="text" id="in1" name="title">
+        </p>
+        <p>
+            <label for="in2">글 내용</label> <br>
+            <textarea id="in2" name="msg" cols="31" rows="5"></textarea>
+        </p>
+        <p>
+            <label for="in3">첨부 이미지</label>
+            <input type="file" id="in3" name="img">  <!--[파일 선택], 선택된 파일 없음-->
+        </p>
+        <hr>
+        <p>
+            <input type="submit" value="작성완료">
+            <input type="reset" value="다시작성하기">
+        </p>
+    </form>
+
+        <hr>
+
+        <h3>게시글 보기</h3>
+        <form action="./load_data.php" method="get">
+            <input type="submit" value="모든 게시글 보기">
+        </form>
+
+
+</body>
+</html>

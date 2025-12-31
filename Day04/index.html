@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTTP Request</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    
+    <h2>This is HTTP Request TEST page</h2>
+
+    <fieldset>   <!--  네모칸 구분선 만들때 사용하는 용어(요소) 필드셋 -->
+        <legend>GET method test</legend>
+        <!-- HTML에서 서버의 백엔드 프로그램을 실행하며 사용자 입력값들을 전송해 주는 요소 -->
+
+        <form action="./aaa.php" method="get">
+
+            <!-- 사용자가 글씨를 입력하도록 해 주는 요소 -->
+             <p>
+            <label for="in1">제목 : </label>
+            <input type="text" id="in1" name="title">
+            </p>
+
+            <p>
+            <label for="in2">메세지</label>
+            <input type="text" id="in2" name="msg">   <!-- 여기서 name 은 식별자이다. -->
+            </p>
+            <p>
+                <input type="submit">
+                <input type="reset">
+            </p>
+
+        </form>
+    </fieldset>
+    <hr>
+    <fieldset>
+        <legend>POST method test</legend>
+        <form action="./bbb.php" method="post">
+    <p>
+        <label for="in3">아이디: </label>
+        <input type="text" id="in3" name="user_id">
+    </p>
+    <p>
+        <label for="in4">비밀번호: </label>
+        <input type="password" id="in4" name="user_pw">
+        
+    </p>
+    <p>
+        <input type="submit" value="로그인">
+        <input type="reset" value="작성취소">
+    </p>
+
+        </form>
+    </fieldset>
+
+    <hr>
+
+    <fieldset>
+        <legend>Image File Upload </legend>
+        <!-- 파일 전송할때는 텍스트(key=value)와 다른 encoding 방식이 필요함 -->
+        <form action="./ccc.php" method="post" enctype="multipart/form-data">
+            <p>
+                <label for="in5">이미지 파일 선택 : </label>
+                <input type="file" id="in5" name="img">
+            </p>
+            <p>
+                <input type="submit" value="전송">
+            </p>
+
+
+
+        </form> 
+    </fieldset>
+
+
+
+</body>
+</html>

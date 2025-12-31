@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>RWD layout</title>
+        <meta charset="utf">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+          *{padding: 0; margin: 0;}
+
+            /* 콘텐츠가 화면전체의 90% 너비를 사용하도록 #wrap 적용  */
+            #wrap{
+                width: 90%;
+                border: 4px solid black;
+                margin-left: auto;
+                margin-right: auto;
+            
+            /* 줄바꿈 enter 에 의해 작은 공백문자가 보여짐. 이로 인해 영역사이즈 계산에 문제 발생 */
+            font-size: 0px;
+        }
+            /* 각 div 영역들을 구분하기 위해 배경색을 모두 다르게 지정 */
+            #wrap div:nth-child(1){background-color: aqua;}
+            #wrap div:nth-child(2){background-color: lightgreen;}
+            #wrap div:nth-child(3){background-color: orange;}
+            #wrap div:nth-child(4){background-color: indigo}
+            #wrap div:nth-child(5){background-color: yellow;}
+
+            /* 모든 영역들의 높이, 너비, display 속성 지정 */
+            #wrap div {
+                height: 100px;
+                width: 20%;
+                display: inline-block;   /* 인라인블럭으로 지정해야 텍스트 안의 블럭사이즈를 조절할 수 있다. */
+                font-size: medium;
+            }
+
+            /* RWD 적용: 뷰포트의 사이즈에 따라 다른 레이아웃으로 영역 5개를 배치 */
+            @media all and (min-width:320px){    /*  320 이하인 사이즈 */
+                #wrap div{ width: 100%}
+            }
+            
+            @media all and (min-width: 600px){  /*  600 이하인 사이즈 */
+                #wrap div{width: 50%;}
+                #wrap div:last-child{width:100%}
+            }
+            @media all and (min-width: 980px) {
+                #wrap div{width: 20%}
+                #wrap div:last-child{width: 20px;}
+            }  
+
+        </style>
+    </head>
+    <body>
+
+        <!-- 반응형으로 배치될 영역 5개 -->
+        <div id="wrap">
+            <div>aa</div>
+            <div>bb</div>
+            <div>cc</div>
+            <div>dd</div>
+            <div>ee</div>
+        </div>        
+
+    </body>
+</html>

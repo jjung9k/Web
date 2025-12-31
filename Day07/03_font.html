@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>font style</title>
+        <meta charset="UTF-8">
+
+        <!-- 내부 스타일시트  -->
+        <style>
+            /* 이 영역안에서는 CSS언어의 문법체계를 따름 */
+
+            /* 폰트 스타일 */
+            /* 1. 글꼴 */
+            p{font-family: "휴먼옛체", serif;}   /* 순서대로 폰트를 적용해 봄. 안되면 다음것. 마지막은 언제나 서체를 작성*/
+            p{font-family: "Algerian", serif;}
+            /* 서체 종류 */
+            p{font-family: serif;}
+            p{font-family: sans-serif;}
+            p{font-family: monospace;}
+            p{font-family: cursive;}
+            p{font-family: fantasy;}
+
+            /* 글꼴에 시스템의 영향을 받음. 그래서 시스템 영향을 받지 않으려면 웹폰트를 사용 */
+            /* 웹폰트 : 개발자가 폰트파일(.tff, .otf)을 서버에서 같이 배포하는 방법  */
+            /* 해당 폰트파일만의 글꼴을 새로 만들어서 적용하는 방법 */
+            @font-face {
+                font-family: "My Font";
+                src: url('./font/aaa.ttf');
+            }
+            
+            /* 웹폰트를 적용 */
+            p{font-family: "My Font", serif;}
+
+            @font-face {
+                font-family: "Your Font";
+                src: url('./font/billabong.otf');
+            }
+            p{font-family: "Your Font", sans-serif;}
+
+            /* 무료폰트를 제공하는 사이트들이 있음. [네이버 무료폰트, 산돌구름,....] */
+            /* 책에 폰트를 웹경로에서 받아서 사용하는 경우도 소개되어 있음 */
+
+            /* 2. 폰트 크기 */
+            p{font-size: large;}
+            p{font-size: medium;}
+            p{font-size: 18px;}
+            /* 원래 적용 크기의 몇 배로 지정하기 */
+            p{font-size: medium;}
+            p{font-size: 2.0em;}   /* 부모 요소의 글씨 크기를 기준으로 변경 */
+            p{font-size: 1.5rem;}  /* 1.5배 크기, 최상위 요소의 글씨 크기를 기준으로 변경 (권장함) */
+            p{font-size: 200%;}    /* == 2.0em  */ 
+            /* 3. 폰트 두께 */
+            p{font-weight: 500;} 
+            p{font-weight: 800;} 
+            p{font-weight: bold;} 
+            p{font-weight: normal;}  /* default */
+
+            /* 4. 이탤릭체 */
+            p{font-style: italic;}
+            p{font-style: normal;}
+
+            /* 5. font 관련 위 4개의 스타일속성을 한방에 축약으로 사용할 수 있는 속성 */
+            p{font: italic bold 3.0rem "jungku Font", serif;}   /* 작성순서: (weight/style) size family */
+            /* 축약사용할때 원하는 스타일속성만 적용해도 됨 */
+            p{font: 400% sans-serif;}
+ 
+    
+
+
+
+        </style>
+    </head>
+    <body>
+        
+
+        <p>abcdefg</p>
+        <p>한글은 어떠한가?</p>
+
+
+    </body>
+
+
+
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>parent size test</title>
+</head>
+<body>
+
+    <!-- 부모요소 height 인 무조건 자식요소를 감싸지 않을 수도 있음 -->
+    <!-- 1. 블록 요소안에 블록요소가 있다면 부모가 자식을 모두 감싼다. -->
+    <div style="border: 1px dotted blue">
+        <p style="border: 1px dotted red; margin: 5px; padding: 5px;">Hello</p>
+    </div>
+
+    <hr>
+    <!-- 2. 블럭요소안에 인라인요소가 있다면... 인라인요소의 marging, padding은 감싸지 않음 -->
+    <div style="border: 1px dotted blue; background-color: aquamarine;">
+
+        <a href="" style="border: 1px dotted red; padding: 10px;"> Naver </a>
+        <strong style="border: 1px dotted red; margin: 10px;"> CSS </strong>
+    </div>
+
+    <hr>
+
+    <!-- 3. input 요소 사용할때 너비 100% 주의!! 
+     width는 액자사이즈가 아니라. 콘텐츠가 보여지는 너비임. 여백과 경계선너비는 빠짐 -->
+     <!-- 그래서 width 사이즈의 기준을 패딩과 경계선까지 포함하도록 속성을 변경 -->
+    <div style="border: 1px solid black">
+        <input type="text" style="width: 100%; box-sizing: border-box; border: 0px;">
+    </div>
+</body>
+</html>

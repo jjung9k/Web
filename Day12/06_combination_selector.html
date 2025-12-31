@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combination selector</title>
+
+    <style>
+        body {
+            background-color: #EEEEEE;
+        }
+
+        /* 하위(자손) 선택자 */
+        section p {
+            background-color: white;
+            padding: 1rem;
+        }
+
+        section>p {
+            color: violet;
+        }
+
+        /* 인접 형제 선택자 */
+        section h3+p {
+            background-color: black;
+            color: white;
+        }
+
+        /* h3 다음에 오는 형제 중 첫 *
+        /*  h4 다음으로 오는 형제들 중에서 p요소들만 선택 */
+        section>div h4~p {
+            border-radius: 10px;
+            box-shadow: 0px 1px 3px gray colorblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Combination Selector 조합 선택자</h1>
+
+    <section>
+        <h3>예약 방법 & 사용 요금</h3>
+        <p>아직 온라인 예약 신청이 준비되지 않았습니다. 다시 접속 해 주세요.</p>
+        <p>문의 연락처 : 02-1111-2222</p>
+
+        <hr>
+        <div>
+            <h4>Room 형태 및 이용가격</h4>
+            <p>가족실(2~4인) : 60,000원</p>
+            <label for="">예약가능 </label>
+            <p>도미토리(4인 공용) : 25,000원</p>
+            <label for="">예약불가</label>
+        </div>
+
+
+
+
+
+
+    </section>
+
+
+
+
+
+</body>
+
+</html>

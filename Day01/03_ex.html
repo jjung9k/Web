@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>list anchor image element</title>
+    </head>
+    <body>
+
+        <!-- 1. List 요소 -->
+        <ul>
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+        </ul> 
+
+        <ol>
+            <li>aaa</li>
+            <li>bbb</li>
+            <li>ccc</li>
+        </ol>
+
+        <dl>
+            <dt>aaa</dt>
+            <dd>이것은 Definition Data 입니다.</dd>
+            <dt>aaa</dt>
+            <dd>이것은 Definition Data 입니다.</dd>
+            <dt>aaa</dt>
+            <dd>이것은 Definition Data 입니다.</dd>
+        </dl>
+
+        <!-- 2. 하이퍼링크 요소 : anchor (인라인 요소) -->
+        <!-- 2.1) 절대경로 -->
+        <a href="https://www.naver.com">네이버</a>
+        <a href="https://www.google.com" target="_blank">구글</a>
+        <br>
+        <!-- 2.2) 상대경로 -->
+        <a href="./02_text.html">02 text 웹문서</a>
+        <a href="../../Python/Projects/web-test/index.html" target="_blank">파이썬 수업에서 만든 웹문서</a>
+        <br>
+        <!-- 2.3) 같은 웹문서안에서 특정 위치로 스크롤 이동 -->
+        <a href="#aa">도움말 위치로..</a>
+        <hr>
+        <h3 id="aa">도움말</h3>
+
+        <!-- 인라인 요소의 줄바꿈을 위해 br태그를 사용하는 대신 p요소 사용도 좋음 -->
+        <p><a href="">aaa</a></p> 
+        <p><a href="">bbb</a></p> 
+
+        <!-- 리스트 요소안에 앵커요소 배치 가능 -->
+        <ul>
+            <li><a href="https://www.naver.com">네이버</a></li>
+            <li><a href="https://www.google.com">구글</a></li>
+            <li><a href="https://www.daum.net">다음</a></li>
+        </ul>
+
+        <!-- 이미지 파일링크를 열기 -->
+        <p>
+            <a href="https://cdn.pixabay.com/photo/2018/03/07/23/30/wood-3207458_640.jpg">이미지 링크</a>
+            <a href="./seolak.jpg">이미지링크(상대경로)</a>
+        </p> 
+
+        <!-- 웹브라우저에서 보여줄 수 없는 파일 형식 링크 (자동 다운로드 됨)-->
+        <p>
+            <a href="../../Web.zip">압축파일 링크</a>
+            <a href="aa.hwp">hwp파일 링크</a>
+        </p>
+
+        <!-- 이메일 링크 -->
+        <p>
+            <a href="mailto:mbca.aix@gmail.com">mbca.aix@gmail.com</a>
+        </p>
+
+        <!-- 3. 이미지 요소 -->
+        <img src="./seolak.jpg" alt="설악산">
+        <img src="./seolak.jpg" alt="설악산" width="100">
+        <img src="./seolak.jpg" alt="설악산" width="100%">
+        <img src="./seolak.jpg" alt="설악산" width="100" height="150">
+        <img src="https://cdn.pixabay.com/photo/2025/10/24/11/12/tree-9913930_640.jpg" alt="pixabay image">
+
+        <!-- image + anchor -->
+        <p>
+            <a href="./seolak.jpg" target="_blank"><img src="./seolak.jpg" alt="설악산" width="50"></a>
+        </p>
+
+        <p>
+            <img src="./aaa.jpg" alt="대체 되는 글씨">
+        </p>
+
+        
+    </body>
+</html>

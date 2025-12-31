@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container>div {
+            background-color: aqua;
+            margin: 4px;
+            text-align: center;
+            padding: 8px;
+        }
+
+        .container {
+            display: grid;
+
+            /* 자식 요소들을 한줄에 3칸식 배치해 보기 */
+            grid-template-areas: 100px 100px 100px;
+            /* 각 컬룸의 너비 지정[지정한 개수만큼 column */
+
+            /* px 단위 대신에.. 상대적인 비율로 너비를 결정할 수 있는 fr 단위(fraction:일부분) */
+            grid-template-columns: 1fr 1fr 2ft;
+            /* 1:1:2 */
+
+
+            grid-template-columns: auto auto auto;
+
+
+            grid-template-columns: 150px 200px;
+
+            /* 칸 사이의 너비와 높이 갭을 설정 */
+            column-gap: 1rem;
+            row-gap: 0.5rem;
+            gap: 5rem 1rem;
+            /* row column */
+        }
+
+        #item1 {
+            grid-column-start: 1;
+            grid-column-end: 3;
+            /* 2~3번까지 영역을 차지 */
+        }
+
+        #item2 {}
+
+        #item3 {}
+    </style>
+</head>
+
+<body>
+    <!-- / 플랙스 스타일처럼 부모요소에 grid 속성으로 자식요소를 격자 배치해 줌 -->
+    <div class="container">
+
+        <div id="item1">1</div>
+        <div id="item2">2</div>
+        <divi d="item3">3
+    </div>
+    <div id="item4">4</div>
+    <div id="item5">5</div>
+    <div id="itme6">6</div>
+    <div id="itme7">7</div>
+
+
+
+
+    </div>
+</body>
+
+</html>

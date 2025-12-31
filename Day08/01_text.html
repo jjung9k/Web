@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>text style</title>
+    <meta charset="utf-8">
+
+    <!-- 내부 스타일시트 -->
+     <style>
+        /* 이 영역안에서는 CSS문법 체계를 따름 */
+        /* 1. 텍스트의 수평정렬  */
+        p{text-align: justify}   /* 양쪽정렬 */
+        #p1{text-align: center;} 
+        #p2{text-align: right;}
+
+        /* 2. 대소문자 변환 */
+        #p1{text-transform: uppercase;}
+        #p1{text-transform: lowercase;}
+        #p2{text-transform: capitalize;}
+
+        /* 한글은 대소문자 변환 무시됨 */
+        #p2{text-transform: uppercase;}
+        
+        /* 3. 텍스트 줄긋기(장식) */
+        #p1{text-decoration: underline;}
+        #p2{text-decoration: overline;}
+        #p2{text-decoration: line-through;}
+
+        /* 4. 텍스트 그림자 */
+        #p1{text-shadow: 3px 3px 3px red;}
+
+
+        /* 5. 워드 랩(한글은 자동 랩핑.) */
+        .aa{
+            border:2px solid blue;
+            width:5em;    /* 5글자 사이즈 */
+            /* 영단위 띄어쓰기 상관없이 한글처럼 자동 줄바꿈 되도록 하는 요소  */
+            word-wrap: break-word;        
+        }
+        /*  6. 다중 컬럼 */
+        .bb{
+            column-count: 2;
+            column-gap: 80px;
+            column-rule: 4px dashed green;
+        }
+
+     </style>
+</head>
+<body>
+    
+    <p id="p1">Hello world</p>
+    <p id="p2">안녕하세요. 강중구입니다.</p>
+
+    <p class="aa">
+        한글은 전혀 문제없이 자동으로 워드랩이 됩니다.
+        Iam a boy nice to meetyou
+    </p>
+    <p class="bb">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae quam repellendus molestias corporis laudantium consectetur nemo. Eveniet veniam labore error eos. Labore, veritatis? Incidunt quisquam accusamus quaerat quidem voluptatem voluptate.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor pariatur voluptatibus libero perspiciatis accusamus ratione quaerat aspernatur, facere vel quibusdam accusantium numquam! Eveniet officiis repudiandae alias ratione assumenda quo asperiores!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam molestiae molestias odio quas veritatis nobis quos totam animi porro, nam ipsa alias quidem, distinctio fugiat! Veritatis quasi suscipit totam nemo!
+    </p>
+    <!-- 텍스트 수평정렬 속성을 사용할때. 블록요소에서만 의미가 있음 -->
+    <div style="text-align: center; border: 1px solid black;"> Hello </div>
+    <span style="text-align: center; border: 1px solid black;">Hello</span>
+    <!-- 인라인 요소를 가운데 오게 하려면 인라인을 감싸는 블럭요소를 만들고 거기에 수평정렬스타일링 -->
+    <div style="text-align: center;">
+        <span>Hello</span>
+        <img src="../Day06/image/koala.jpg" alt="ms20" width="50">
+    </div>
+    <!-- text-align 속성은 글씨의 수평 정렬이 아니라 자식요소(글씨)의 수평 정렬임 -->
+
+
+
+
+
+</body>
+</html>

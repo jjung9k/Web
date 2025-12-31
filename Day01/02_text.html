@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <!-- 1. 문서의 여러 정보를 설정하는 주소줄 영역 -->
+    <head>
+        <title>html text ex</title>
+    </head>
+    <body>
+        
+        이곳에 글쓰를 쓰면 브라우저에 보임.
+        두번째 줄입니다. 띄어쓰기도            어차피 하나만 인식됩니다.
+        특수문자 : ~!#$%^&*()_+";"';' 
+        주의할 특수문자 < > 이런 태그문에 사용하는 특수문자
+        
+        p=10
+        5<p         ></p>
+
+        특수문자를 표기하고 싶다면.. 5 &lt; p
+        &gt;&yen;&amp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&copy;
+
+        <!-- 글의 한 단락을 구분해주는 요소 -->
+        <p>단락요소는 자동으로 한줄을 차지하게 됨</p>
+        <p>당연하게 이것은 두번째 단락이 됨. 위아래 여백이 존재함</p>
+        <p>단락안에서 엔터를 통해 줄을 바꿔도
+            화면에는 여전히 한줄로 보임
+        </p>
+        <p>
+            단락안에서 줄바꿈 하기<br>
+            여기는<br> 두번째<br> 줄
+        </p>
+
+        <p>
+            요소안에 또 다시 <p>요소가</p> 있어도 되는 경우가 있음.            
+        </p>
+        <p>요소는 엔드태그가 있어야 하지만.. 실수로 없어도..알아서 종료함
+        <p>다음 요소</p>
+        
+        <!-- 써있는 그대로 출력해주는 요소 -->
+        <pre>
+            이 안에 작성한 글은
+            보이는 그대로 화면에 그려짐
+
+
+            띄어쓰기도           그래도 보여요.
+        </pre>
+
+        <!-- 글의 제목을 표시하기 위한 요소 -->
+        <h1>This is Heading element</h1>
+        <h2>This is Heading element</h2>
+        <h3>This is Heading element</h3>
+        <h4>This is Heading element</h4>
+        <h5>This is Heading element</h5>
+        <h6>This is Heading element</h6>
+
+        <h7>This is Heading element</h7>
+
+        <!-- 텍스트 서식관련 요소들 -->
+        <p>텍스트 서식 <strong>강하게</strong> 입니다.</p> 
+        <p>텍스트 서식 <em>강조</em> 입니다. </p>
+        <p>코드 작성 요소 <code>a=10</code> 입니다.</p>
+        <p>위첨자 <sup>aaa</sup> 아래첨자 <sub>bbb</sub> </p>
+
+        <!-- 화면에 수평선 그리기 요소 [엔드태그가 없음 : empty element]-->
+        <hr> 
+
+        <p>여기가 마지막</p>
+
+    </body>
+</html>

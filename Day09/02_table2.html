@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>table2 style</title>
+    <meta charset="utf-8">
+
+    <style>
+        table{
+            border: 1px solid black;
+            border-collapse: collapse;           
+        }
+        th, td{
+            border: 1px solid black;
+            
+        }
+        th{
+            background-color: green;
+            color: white;       
+        }
+        thead{
+            position: sticky;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <!-- 스크롤이 되어도 고정되는 줄 만들기 -->
+        <thead>
+            <tr>
+                <th>no</th>
+                <th>name</th>
+                <th>address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>sam</td>
+                <td>seoul</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>robin</td>
+                <td>busan</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>hong</td>
+                <td>incheon</td>
+            </tr>
+            </tbody>  
+    </table>
+
+</body>
+</html>

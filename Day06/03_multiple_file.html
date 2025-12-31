@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>여러개의 파일 전송</title>
+</head>
+<body>
+    
+    <h2>여러개의 파일을 전송해보기</h2>
+
+    <!-- 다중선택이 가능하도록 input요소에 속성 추가하기 -->
+     <form action="./bbb.php" method="post" enctype="multipart/form-data">
+
+        <!-- 파일선택기에서 보여줄 파일의 확장자를 제한할 수 있음. accept 속성 -->
+        <input type="file" name="aaa[]" multiple="multiple" accept="image/jpeg">
+        <hr>
+        <input type="submit" value="파일 전송">
+
+
+
+
+     </form>
+
+
+
+
+</body>
+</html>

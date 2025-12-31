@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>anchor & list style</title>
+    <meta charset="utf-8">
+    <!-- 내부 스타일 시트 사용 -->
+    <style>
+        a:link{color: violet;}
+        a:visited{color: green;}
+        a:hover{color: red; font-size: 2em;}
+        a:active{color: yellow;}
+
+        p:hover{background-color: greenyellow;}  /* 마우스 올리면 컬러 그린엘로우가 나온다 */
+
+        img{width: 200px; border: 2px solid black; background-color: antiquewhite; border-radius: 10px;}
+        img:hover{background-color: gray; width: 230px;}
+
+
+    </style>
+</head>
+<body >
+    
+    <!-- anchor에 사용했던 스타일 -->
+    <a href="https://www.perplexity.ai">perplexity</a>
+
+     <!-- 일반 요소에는 :hover 같은 의사선택자 적용가능 -->
+    <P>Hello WEB</P>
+    <img src="./image/image.png" alt="image">
+
+    <hr>
+
+    <!-- 리스트 스타일 -->
+    <ul>
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>JavaScript</li>
+    </ul>
+    <style>
+        ul{list-style-type: disc; }  /* deafault */
+        ul{list-style-type: circle;}
+        ul{list-style-type: square; list-style-position: outside;}   /* 사각형 모양 - outside는 default   */
+        ul{list-style-type: none;}
+        ul{list-style-image: url('./image/border.png');}  /* 사이즈 조절 속성이 없어서 잘 사용안함. img요소로 아이콘을 만들어 사용함 */   
+    </style>
+
+    <hr>
+
+    <ol>
+
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>JavaScript</li>
+    </ol>
+    <style>
+        ol{list-style-type: lower-alpha;}
+        ol{list-style-type: lower-latin;}   /* alpha와 비슷  */
+        ol{list-style-type: lower-roman;}
+        ol{list-style-type: lower-greek;}
+        ol{list-style-type: lower-alpha;}
+        ol{list-style-type: decimal;}   /* 10진수 default */
+        ol{list-style-type: decimal-leading-zero;}
+    </style>
+
+
+
+
+
+
+
+    </body>
+
+</html>

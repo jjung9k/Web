@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>form element</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+
+        <h2>form element test</h2>
+
+        <!-- 원래는 POST로 전송해야 하는데 연습을 위해 GET방식으로 데이터들을 전송하기 -->
+        <form action="./aaa.php" method="get" enctype="application/x-www-form-urlencoded">
+            <fieldset>
+                <legend>입력값들 전송하기</legend>         
+                <p>
+
+                    <label for="in1">이름 : </label>
+                    <input type="text" name="user_name" id="in1">
+                </p>
+                <p>
+                    <label>비밀번호 : 
+                        <input type="password" name="user_pw" size="15">
+                    </label>
+                </p>
+                <p>
+                    성별 :
+                    <label><input type="radio" name="gender" value="female" checked>여성</label>
+                    <label><input type="radio" name="gender" value="male">남성</label>
+                </p>
+                <p>
+                    좋아하는 과일 선택(다중선택) :
+                <label><input type="checkbox" name="fruits[]" value="apple">사과</label>
+                <label><input type="checkbox" name="fruits[]" value="banana">바나나</label>
+                <label><input type="checkbox" name="fruits[]" value="orange">오렌지</label>
+                <!-- 백엔드 프로그램을 php로 구성할때만...[] 로 배열을 추가 -->
+                ,,,
+                </p>
+                <p>
+                    메세지 : <br>
+                    <textarea name="msg" cols="50" rows="5"></textarea>
+                </p>
+                <p>
+                    <select name="brand">
+                        <optgroup label="국산">
+                            <option value="현대">현대</option>
+                            <option value="기아" selected>기아</option>
+                            <option value="KGM">KGM</option>
+                        </optgroup>
+                    </select>                    
+                </p>
+                <hr>
+                
+                <div>
+                    <input type="image" src="./image/koala.jpg" width="50">
+                    <input type="reset" value="초기화">
+                </div>
+
+            </fieldset>
+
+
+        </form>
+        
+
+
+
+
+
+
+    </body>
+</html>

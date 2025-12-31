@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>animation style</title>
+        <meta charset="utf-8">
+        <style>
+            #aa{
+                width: 50px;
+                height: 50px;
+                background-color: gray;
+                border-radius: 25px;
+                /* 요소가 움직이려면... 좌표(left,top, right, bottom)를 변경할 수 있어야 함 */
+                position: absolute;
+                
+                /* 설계한 애니메이션을 적용 */
+                animation-name: myanim;
+                
+                animation-name: bounce;
+                animation-duration: 3s;
+                animation-iteration-count: 10;
+                     
+            }
+
+            /* 바운드 애니메이션 설계 */
+            @keyframes bounce{
+                from,to{
+                    bottom: 0px; left: 0px;
+                    animation-timing-function: ease-out;
+                }
+
+                50%{
+                    bottom: 200px;
+                    animation-timing-function: ease-in;
+                }
+            }
+
+            /* 요소의 움직임을 만들어내는 애니메이션 설계 */
+            @keyframes myanim{
+                0% {left: 0px; top: 0px;}     /* 애니 시작할 때 */
+                25%{left: 100px; top: 50px;}
+                50%{left: 200px; top: 0px;}
+                75%{left: 100px; top: 25px;}
+                100% {left: 00px; top: 0px;}  /* 애니 끝날 때 */
+            }
+        </style>
+
+    </head>
+    <body>
+        <div id="aa"></div>
+
+    </body>
+</html>
