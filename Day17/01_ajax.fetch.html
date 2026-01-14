@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS fetch</title>
+
+</head>
+<body>
+    <!-- 원래는 실제 호스팅 서버에 요청하고 결과를 받아야 하지만... -->
+    <!-- 백엔드코드와 동시에 작업해야 해서 혼란스럽다. 간단하게 local 에서 서버응답 데이터를 파일로 만들어 실습  -->
+    <!-- 서버에서 대량의 데이터를 응답(response)해 줄때 데이터구분을 위해 3가지 표기형식 사용[csv, xml, json] -->
+
+    <button onclick="aaa()">get csv</button>
+    <button onclick="bbb()">get xml</button>
+    <button onclick="ccc()">get json</button>
+    <hr>
+    <div id="result">요청 결과</div>
+
+    <script>
+        function aaa() {
+            // 1. csv 데이터 응답받아 분석하기. (parse)파스하기
+            // ajax 기술을 웹서버 환겨에서만 가능함. 다행히 로컬을 서버로 구동하여 실행해주는 확장프로그램이 vscode에 존재함.[Live Server]
+
+            // ajax 기술로 데이터만 요청하기 - fetch 라이브러리 함수를 사용(내장함수)
+            fetch('./user_data.csv')     // fetch로 내려받아~ '그리고나서'라는 then을 사용
+            .then(function(response){    // 응답객체
+                //응답객체는 데이터를 binary 형태로 가지고 있음.
+                return response.text();   // 텍스트로 바꿔줘.(시간이 걸려서 비동기 작업)
+            })
+            .then(function(text){
+                // document.getElementById('result').innerHTML= text;
+                // CVS 데이터 분석
+                // 줄 분리
+
+                users= text.split('\n');
+                // alert(users.length)
+
+                var s=""
+                for(var i=1; i<users.length; i++){  // 제목줄(0번 줄) 제외
+                    //한줄 데이타(이름, 나이, 주소) 안에서 각 칸들을 분리
+                    var values= users[i].split(',');
+
+                    s += "<p>";
+                    s += "name: " + values[0] + "<br>";
+                    s += "age: " + values[1] + "<br>";
+                    s += "address: " + values[2] + "<br>";
+                    s += "</p>";
+                }
+                document.getElementById('result').innerHTML= s;
+            })
+        }
+        function bbb() {
+            // xml 데이터 받기
+            fetch('./user_data.xml')
+            .then(function(response){
+                return response.text();                
+            })
+            .then(function(text){
+                // alert(text);
+
+                // xml 파싱하기 - xml 분석가(parser:파서) 객체를 생성하여 분석
+                var parser= new DOMParser();  // xml 파일을 마치 html의 document 객체처럼 해석해 달라고 요청 =>> DOMParser는 객체를 사용하는 설계도면(생성자 함수)
+                var doc= parser.parseFromString(text, 'application/xml');
+
+                // users 라는 이름의 태그문을 가진 요소를 찾아오기
+                var users= doc.getElementsByTagName('user');
+                // alerts(users.length);
+                
+                var names= doc.getElementsByTagName('name');
+                var ages= doc.getElementsByTagName('age');
+                var addresses= doc.getElementsByTagName('adderss');
+
+                // alert(names.length);
+                // alert(ages.length);
+                // alert(addresses.length);
+
+                // alert(names[0]);
+                // alert(names[0].textContent);
+
+                var s="";
+                for(var i=0; i<users.length; i++){
+                    s += "<p>";
+                    s += names[i].textContent + " : " + ages[i].textContent + " - " + addresses[i].textContent;
+                    s += "</p>"; 
+                }
+                document.getElementById('result').innerHTML= s;
+            })
+        }
+        function ccc() {
+            // json 데이터 분석
+            fetch('./user_data.json')
+            .then(function(response){
+                return response.text();
+            })
+            .then(function(text){
+                // alert(text);
+
+                // json 문자열을 분석하기 하기
+                var json= JSON.parse(text);  // json string --> JS object로 바꾼다
+                //alert(json.users[0].name);
+                
+                var users= json.users;
+
+                s= "";
+                for(var i=0; i<users.length; i++){
+                    s += users[i].name + ",";
+                    s += users[i].age + ",";
+                    s += users[i].address + ",";
+                }
+                document.getElementById('result').innerHTML= s;
+            })
+
+            // fetch()의 장점. 서버응답을 곧바로 json 객체로 변환하여 받을 수 있음.
+            fetch('./user_data.json')
+            .then(function(response){
+                return response.json();   // 응답결과를 json을 분석한 객체로 변환
+            })
+            .then(function(json){
+                //alert(json.users);
+                var users= json.users;
+
+                s= "";
+                for(var i=0; i<users.length; i++){
+                    s += users[i].name + ",";
+                    s += users[i].age + ",";
+                    s += users[i].address + ",";
+                }
+                document.getElementById('result').innerHTML= s;
+                
+            })
+        }
+    </script>
+    <hr>
+
+    <!-- [약국정보, 지하철정보 등] 사용자에게 유용한 정보를 주기 위해 OPEN API 를 사용하는 경우가 많음 -->
+    <!-- https://www.w3schools.com/ 에서 xml데이터요청을 연습 할 수 있는 경로 제공 [일종의 open api] -->
+    <button onclick="ddd()">음반 목록 정보</button>
+    <script>
+        function ddd(){
+            fetch('http://www.w3schools.com/XML/cd_catalog.xml')
+            .then(function(res){
+               return res.text(); 
+            })
+            .then(function(text){
+                alert(text);
+            })
+        }
+    </script>
+    <hr>
+    <button onclick="eee()">음반 목록 정보 요청을 서버에게 대신 요청하기</button>
+    <script>
+        function eee(){
+            fetch('./openapi.php')
+            .then(function(res){
+                return res.text()
+            })
+            .then(function(res){
+                
+            })
+        }
+
+
+    </script>
+
+
+</body>
+</html>

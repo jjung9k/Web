@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 계산기 만들기</title>
+    <style>
+        body {
+            font-family: '맑은 고딕', sans-serif; line-height: 1.6; padding: 20px;}
+            h2{color: navy;}
+            span{ color: red; font-weight: bold;}
+        
+    </style>
+    <script>
+    var input1= prompt("첫번째 숫자를 입력해 주세요");
+    var input2= prompt("두번째 숫자를 입력해 주세요.");
+
+    var num1= Number(input1);
+    var num2= Number(input2);
+    
+    var plus = num1 + num2;
+    var minus = num1 - num2;
+    var multiply = num1 * num2;
+    var divide = num1 / num2;
+
+    document.write("더하기 (+)결과: <span>" + plus + "</span><br>");
+
+    </script>
+
+
+</head>
+<body>
+    
+</body>
+</html>

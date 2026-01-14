@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Date</title>
+
+    <script>
+        //1. Date 생성자 함수 - 아직 객체는 아님. 사용하려면. 객체로 생성해야 함.
+
+        var a= new Date();  // 생성되는 순간의 날짜와 시간정보들을 가진 객체 
+        document.write(a.toString() + "<br>");  //.toString() 객체의 속성정보를 글씨로 생성해 주는 기능.
+        // .write() 기능에 객체를 주면 자동으로 .toSting()을 발동함.
+        document.write(a + "<br>");
+        document.write(typeof(a) + "<br>");
+
+        //객체는 유용한 기능함수(메소드)를 보유하고 있음.
+        document.write(a.toDateString() + "<br>");
+        document.write(a.toLocaleString() + "<br>");
+        document.write(a.getYear() + "<br>");     // 126 -> 1900년 기준(생년월일)
+        document.write(a.getFullYear() + "<br>"); //2026
+        document.write(a.getMonth() + "<br>");    // 0~11( 1월 ~ 12월)
+        document.write(a.getDate() + "<br>");     // 6
+        document.write(a.getHours() + "<br>" );   // 0 ~ 23시
+        document.write(a.getMinutes() +"<br>");   // 9
+        document.write(a.getSeconds() + "<br>");  // 52 
+        document.write(a.getTime() + "<br>");     // 파이썬 timestemp - 1970/1/1     // 결과: 1767686992348
+
+        //원하는 날짜와 시간으로 Date 객체의 값을 설정할 수 있음.
+        var b= new Date()
+        document.write(b.toLocaleString() + "<br>");  // 2026.1.6
+        b.setFullYear(2030);
+        b.setMonth(3);
+        document.write(b.toLocaleString() + "<br>");   // 2030.4.6
+
+        // 객체를 생성하면서 날짜와 시간을 설정할 수 있음.
+        var c = new Date(2026, 3, 10);  //2026년 4월 10일
+        document.write(c.toLocaleString() + "<br>");
+
+        c = new Date("2026.4.10");     //2026년 4월 10일
+        document.write(c.toLocaleString() + "<br>");
+
+        var c = new Date("Wed Jan 7 2026 13:40:13 GMT+0900");  //2026년 1월 7일
+        document.write(c.toLocaleString() + "<br>");   // 2026.1.7 오후 1:40:13
+ 
+        c = new Date(1545646);  // timestemp 시간으로 날짜 설정 - 1970/1/1 09:00 부터 MS마다 카운팅한 수
+        document.write(c.toLocaleString() + "<br>"); 
+
+        // 두 날짜 사이의 비교연산 수행해 보기(날짜 계산기)
+        var a= new Date("2025. 11. 10");
+        var b= new Date();
+
+        var diff= b - a ;  // 이렇게 Date 객체를 산술연산하면 자동으로 timestemp시간으로 연산을 수행함.
+        document.write(diff + "밀리세컨드의 시간이 지났어요. <br>");
+
+        //밀리세컨드 ---> 날(day) 수 로 변환하기
+        var sec= diff/1000;   // ms -> s
+        var min= sec/60;      // s-> m
+        var hour= min/60;     // 분 -> 시
+        var day= hour/24;     // 시 -> 날(일)
+
+        document.write(day + "일이 경과 되었습니다.<br>");
+
+        day= Math.floor(day);  // 소수점 제거
+        document.write(day + "일이 경과 되었습니다.<br>");
+
+    </script>
+
+</head>
+<body>
+    
+<hr>
+
+<input type="date" id="aa">
+<button onclick="clickButton()">기준일 입력</button>
+<script>
+    function clickButton() {
+        // 사용자가 입력한 날짜 받아오기
+        var e= document.getElementById('aa');
+        alert(e);
+        alert(e.value);
+        alert(typeof(e.value));   // string(문자열)
+        
+        // Sting 날짜 정보는 - 연산을 할 수 없음. 즉, 날짜 계산을 못함.
+        // 입력된 날짜정보를 이용하여 Date() 객체를 생성
+        var a= new Date(e.value); // 입력한 날짜 객체
+        var b= new Date();  // 오늘
+
+        var diff= b-a;
+        var day= Math.floor( diff/(1000 * 60 * 60 * 24) )
+
+        if(day>0) document.write('오늘로부터 ' + day + "일 전 <br>")
+        else if(day<0) document.write('오늘로부터 ' + (-day) + "일 후 <br>");
+        else document.write('오늘 <br>'); 
+    }
+
+</script>
+</body>
+</html>

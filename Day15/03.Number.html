@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Number</title>
+
+    <script>
+        //2. Number 생성자 함수
+
+        // Number 수치형 변수와 다른것임
+        var a=10;
+        var b= new Number(10);
+
+        document.write(typeof(a) + "<br>");
+        document.write(typeof(b) + "<br>");
+        // 자료형이 달라도 == 비교연산자는 값만 비교해 줌
+        document.write(a == b);
+        document.write("<br>");
+        // JS 에서 자료형과 값을 모두 비교해 주는 연산자가 있다.  ===
+        document.write( a === b);
+        document.write("<br>");
+
+        //Number 객체가 가진 유용한 메소드 몇개만...
+        var num= new Number(123.456);
+
+        //1) 지수 표현법으로 출력.
+        document.write(num + "<br>");
+        document.write(num.toExponential() + "<br>");  //  1.23456e+2
+        document.write(num.toExponential(2) + "<br>");  // 소수점 2자래까지
+
+        //2) 소수점 자르기
+        document.write( num.toFixed() + "<br>");
+        document.write( num.toFixed(2) + "<br>");  //소수점 2자리까지(반올림)
+
+        //3) 진법 변환 표기(string으로)
+        var num= new Number(10);
+        document.write(num.toString() + "<br>"); // 10진법
+        document.write(num.toString(2) + "<br>");  // 2진법
+        document.write(num.toString(8) + "<br>");   // 8진법
+        document.write(num.toString(16) + "<br>");   // 16진법
+
+        // number 수치형변수를 자동으로 Number 객체로 wrapping 되어  처리 될 수 있음.
+        var a= 255;        // number   //  자동 new Number(255)
+        document.write( a.toString(16) + "<br>" );
+
+        // 변수가 아닌 숫자데이터(리터럴 값)도 자동 wrapping 됨.(단, 소수점 숫자의 경우만)
+        document.write( 10.0.toString(2) + "<br>" );
+
+    </script>
+    
+</head>
+<body>
+    
+</body>
+</html>

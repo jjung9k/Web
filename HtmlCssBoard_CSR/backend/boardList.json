@@ -1,0 +1,12 @@
+{
+    "status": 200,
+    "total_size":3,
+    "data":[
+        {"no":1, "name":"sam", "title": "안녕하세요", "msg":"메세지", "date": "2026.01.13", "hits:10" },
+        {"no":2, "name":"robin", "title": "헬로우", "msg":"ㅁㅁㅁㅁ", "date": "2026.01.14", "hits:15" },
+        {"no":3, "name":"hong", "title": "좋아요", "msg":"ㄷㄷㄷㄷ", "date": "2026.01.15", "hits:20" }  
+
+        
+
+    ]
+}

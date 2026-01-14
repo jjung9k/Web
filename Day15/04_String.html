@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS String</title>
+
+    <script>
+        //3. String 생성자 함수
+        // 리터럴 string 변수와 다름
+        var a= "hello";
+        var b= new String("hello");
+
+        document.write(typeof(a) + "<br>");
+        document.write(typeof(b) + "<br>");
+        document.write("a=== b 결과: " + (a === b) + "<br>"); //자료형이 달라서 fasle (타입이 다름)
+        document.write("<hr>");
+
+        // String 객체가 가진 유용한 기능함수들.
+        var s= "Hello world";  // 자동 Wrapping ... new String ("Hello world");
+        document.write("글자수 : " + s.length + "<br>");  // 글자수
+        document.write("대문자 : " + s.toUpperCase() + "<br>"); 
+        document.write("소문자 : " + s.toLowerCase() + "<br>");
+        document.write("원본 유지 확인: " + s + "<br>");   // 주의 .. 원본은 변하지 않음
+        document.write("<hr>");
+
+        // 문자열 결합기능
+        document.write("concat 결합 : " + s.concat("Nice") + "<br>");  //.concat() 기능을 잘 안씀. 왜? 문자열 결합은 매우 빈번하게 필요함. + 연산자로 가능하기 때문...
+        document.write(" + 연산자 결합 : " + s + "Nice" + "<br>");
+        document.write("<hr>");
+
+        // 특정 문자가 문자열 안에서 몇번째 index(0, 1,2,3,.....) 인지 확인
+        document.write( s.indexOf('w') + "<br>" ); // W의 위치 : 6번
+        document.write( s.indexOf('t') + "<br>"); // t의 위치에 해당 문자 없으면 : -1
+        document.write( s.indexOf('wor') + "<br>"); // 찾은 문자열의 첫번째 위치번호 : 6
+        document.write( s.indexOf('word')+ "<br>"); // 관련 문자가 없으면 -1로 표기(완전히 일치해야 함)
+
+        // 특정 문자를 찾아서 리턴해 주는 기능 match()
+        var s= "Hello world. Nice world. Nice work. nice study";
+
+        var word= s.match('Hello');
+        document.write('탐색 결과: ' + word + "<br>");
+
+        // 대소문자 구별 확인
+        var word= s.match('hello');
+        document.write('탐색 결과: ' + word + "<br>");  // 못 찾으면 null
+
+         // 대소문자 구별 없이 탐색하고 싶다면.. 옵션 필요(i: insensitive 둔감한)
+        var word= s.match(/hello/i);  // 옵션을 준 글씨를 쓰려면 [정규표현식]을 써야 함. 정규표현식은 ' ' 따옴표 대신 / 슬래시를 사용함'
+        document.write('탐색 결과: ' + word + "<br>");
+
+        // 탐색의 결과가 여러개인 경우
+        var word= s.match('Nice');
+        document.write('탐색 결과: ' + word + "<br>");
+
+        // 여러개를 찾으려면 옵션필요 (g; global)
+        var word= s.match(/Nice/g);   // 정규표현식 사용 (슬래시 / 사용)
+        document.write('탐색 결과: ' + word + "<br>");
+
+        // 여러 옵션 동시사용
+        var word= s.match(/Nice/ig);   // 정규표현식 사용
+        document.write('탐색 결과: ' + word + "<br>");
+
+        //찾은 결과 word는 배열임. 문자열 아님.
+        document.write( word.length + "<br>");
+        document.write( word[0] + "<br>");
+        document.write( word[1] + "<br>");
+        document.write( word[2] + "<br>");
+
+        // 문자 대체하기.. replace
+        var s= "Hello world";
+        document.write( s.replace('world', 'web') + "<br>");
+        document.write( s.replace('worlD', 'web') + "<br>"); // 문자가 하나라도 틀리면 그냥 "원래 글씨"로 출력
+
+        // 대문자로 검색 되게 하려면 .. i 옵션(정규표현식) 사용
+        document.write( s.replace(/worlD/i, 'web') + "<br>");
+
+        // 찾은 글씨가 여러개 일때...
+        var s = "Hello world. Nice world. good WORLd. bad world";
+        document.write( s. replace('world', 'web') + "<br>");
+        // 여러개 적용하려면 . g옵션 ... 정규표현식
+        document.write( s. replace(/world/ig, 'web') + "<br>");
+
+        // 이를 기반으로 게시글의 비속어 xxx로 변경하는 등의 필터작업도 수행가능.
+        // document.write( s. replace(/fuxxx/ig, 'web') + "<br>");
+        // document.write( s. replace(/a aa/ig, 'web') + "<br>");
+        
+        // 띄어쓰기 때문에 데이터분석에 문제가 있는 경우도 많다. ex) 김개똥, 김 개똥.
+        //.trim() 은 앞뒤 공백문자만 제거됨. 
+        document.write( s.replace(/ /ig, '') + "<br>"); // 띄어쓰기와 한칸쓰기  / /   ''
+        
+        // 문자열의 특정문자를 기준으로 잘라내서 배열(리스트)로 만들어주는 기능
+        var s="sam, robin, hong, park";
+        var names= s.split(',');
+        document.write( names.length + "<br>");
+        document.write( names[0] + "<br>");
+        document.write( names[1] + "<br>");
+        document.write( names[2] + "<br>");
+        document.write( names[3] + "<br>");
+        document.write( typeof(names) + "<br>");     // 타입 결과: object 
+        document.write( typeof(names[0]) + "<br>");  // 타입 결과: string
+ 
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

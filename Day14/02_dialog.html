@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS dialog</title>
+
+    <script>
+
+    // JS 다이얼로그 3개 내장함수
+    // 1. alert() ---- 경고창 출력을 여러개 요청하면 차례대로 실행 됨 
+    // alert();
+    // alert('알림.');
+
+    // 2. confirm() -- 사용자에게 확인/취소를 선택하게 하는 다이얼로그
+    // 선택 결과 리턴값으 true/false
+    // var answer= confirm('종료 하시겠습니까?');
+    // if(answer){
+    // document.write('종료.<br>');
+
+    // }else{
+    //         document.write('취소.<br>');
+    // }
+
+    // 3. prompt() -- 사용자 입력요소가 존재하는 다이얼로그
+    // 리턴값은 언제나 string
+    var age= prompt('당신의 나이를 입력하세요.', '0');  // 두번째 파라미터: 기본값
+    document.write(age+ "<br>");
+    document.write(typeof(age) + "<br>");
+    document.write(age + 3 + "<br>");
+    // 산술연산을 하려면 ... 숫자로 변환 후 연산 필요
+    document.write( parseInt(age) + 3 + "<br>");
+
+
+
+    </script>
+
+
+</head>
+<body>
+    
+</body>
+</html>

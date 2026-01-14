@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Array</title>
+
+    <script>
+
+        //5. Array 생성자함수 
+
+        // 배열수업시간에 일부 소개되었음.
+        // JS의 배열을 만드는 방법은 2가지
+        //1. 리터럴 배열
+        var aaa= [10, 20, 30];
+
+        //2. Array 생성자 함수를 이용한 배열 생성
+        var bbb= new Array(10, 20, 30);
+
+        //리터럴 배열은 자동으로 new Array()은 wrapping 됨. 그러니 배열객체의 기능을 모두 사용 가능.
+
+        //배열 객체가 가진 유용한 기능메소드 알아보기
+        var aaa= [10, 20, 30];
+        
+        //1) 배열의 요소 개수를 가지고 있는 속성값
+        document.write( '요소개수 : ' + aaa.length + "<br>");
+
+        // 2) 배열 붙이기. concat()
+        var bbb= [5, 6, 7];
+        var ccc= aaa.concat(bbb);
+        document.write(ccc.toString() + "<br>");  // 배열요소들을 , 구분으로 나열한 문자열
+        // .write()는 객체를 주면 자동으로 .toString()을 발동함.
+        document.write(ccc + "<br>");
+       
+        // 문자열처럼 + 연산자로 결합 되나?
+        var ddd= aaa + bbb;
+        document.write('결합결과: ' + ddd + "<br>");
+
+        document.write('concat() 결과 : '+ typeof(ccc) + "<br>");
+        document.write(' + 연산 결과 : ' + typeof(ddd) + "<br>");
+        
+        // 배열의 concat()과 연산자는 다른 동작임.
+
+        document.write('<hr>');
+
+        // 3) indexof
+        var aaa= [ 10, 20, 30, 80, 70, 30, 60];
+        document.write( aaa.indexOf(20) + "<br>"); // index번호 : 1
+        document.write( aaa.indexOf(20) + "<br>"); // index번호 : 2 [앞에 요소의 번호가 먼저 찾아]
+        // 혹시 뒤에서 부터 검색을 하고 싶다면....'
+        document.write( aaa.lastIndexOf(30) + "<br>");
+        // 요소검색을 특정 인덱스번호 이후부터....
+        document.write( aaa. indexOf(20, 3) + "<br>" );   // 3번 방부터 20을 검색
+
+        // 4) sor - 정렬
+        var aaa= [3, 5, 7, 5, 8, 9, 2, 1, 4]; // 한자리 숫자
+        aaa.sort();    // 원본이 정렬되어 요소위치가 바뀜.
+        document.write(aaa + "<br>");
+
+        // 두자리 이상의 숫자
+        var aaa= [3, 1, 45, 134, 1234, 55, 9];
+        aaa.sort();
+         document.write(aaa + "<br>");
+
+        // 만약 숫자데이터를 정렬 하고 싶다면... [ 정렬기준함수 ] 라는 것을 사용
+        aaa.sort( function(x, y){return x-y} );  //오름차순
+        document.write(aaa + "<br>");
+
+        aaa.sort( function(x, y){return y-x} ); // 내림차순
+        document.write(aaa + "<br>");
+
+        // 문자도 기본이 오름차순으로 정렬 된다.
+        var bbb= ['abc', 'aab', 'bsc', 'asdf', 'asdf'];
+        bbb.sort();
+        document.write(bbb + "<br>");
+
+        // 문자를 내림차순으로 하려면.... desc
+        var desc= function(a,b) {
+            if(a>b) return -1;
+            if(b>a) return 1;
+            return 0;
+        }
+
+        bbb.sort( desc );
+        document.write(bbb+ "<br>");
+
+        //5) slice - 배열의 일부부을 잘라서 새로운 배열로 리턴
+        var aaa= [10, 20, 30, 40, 50, 60, 70, 80, 90];
+        var bbb= aaa.slice(3);  // 3번 방부터 잘라서 새로운 배열로 만들어 줌.
+        document.write(aaa + "<br>");
+        document.write(bbb + "<br>");
+
+        var ccc= aaa.slice(3, 6); // 3번 ~5번 방까지  (데이터 분석할때 많이 사용 됨. 중요)
+        document.write(ccc + "<br>");
+
+        //6) join - 문자열.split()의 정반대 기능 -- 요소들을 특정문자를 기준으로 붙여서 하나의 문자열로 
+        var aaa= ['010', '1234', '4567'];
+        var s= aaa.join('-');
+        document.write(s + "<br>");
+
+        //7) reverse - 배열요소들의 순서를 정반대로 뒤집기 - 원본이 변경됨.
+        var aaa=[10, 20, 30, 40];
+        aaa.reverse();
+        document.write(aaa + "<br>");
+
+        //8) filter -- 특정 기전에 해당하는 요소들만 쏙 뽑아서 새로운 배열로 만들어 줌.
+        var scores= [90, 75, 68, 42, 78, 84, 95, 100, 32, 87];
+        // 80점 이상의 요소들만 뽑아오기
+
+        var good_scores= scores.filter( function(e, index, array){ // 함수에 요소값, 인덱스번호, 배열객체를 사용
+            return e >=80 && index >=3 && array.length>5;
+        });
+        document.write(good_scores + "<br>");
+
+
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,88 @@
+/* 공통 스타일 import */
+@import url('./common.css');
+
+/* 글 작성 페이지만의 고유한 스타일링 */
+
+/*  글 작성 영역 너비. 경계선 */
+.board_write{
+    width: 100%;
+    border-top: 2px solid black;
+}
+
+/* 제목작성 영역, info영역 위아래 여백 */
+.board_write .title, .info{
+    padding: 1.5rem;
+}
+
+/* 제목줄 영역 [라벨, input] 요소를 옆으로 배치되도록  */
+.board_write .title{
+    display: flex;
+    flex-direction: row;  /* 가로 방향 */
+    border-bottom: 1px dashed #dddddd;    
+}
+
+.board_write .col_label{
+    width: 10rem;
+    font-size: 1.4rem;
+    padding: 1rem;
+}
+
+.board_write .col_input{
+    flex-grow: 1; /* lable영역을 제외한 나머지 영역 모두 차지*/
+}
+
+.board_write .col_input input{
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.4rem;
+    box-sizing: border-box; /* 경계선까지를 width 너비로 인식하도록 */
+}
+
+/* 글쓴이 / 비밀번호 영역 스타일 */
+.board_write .info{
+    display: flex;
+    flex-direction: row;
+
+    /* 두 영역을 양 옆으로 밀어버리기 (배치하는 방향의 정렬) */ 
+    justify-content: space-between;     /* 양쪽으로 밀어낸다 */
+    border-bottom: 1px solid black;
+}
+
+.board_write .info .writer{
+    display: flex;
+    width: 50%;
+}
+
+.board_write .info .password{
+    display: flex;
+    width: 30%
+}
+
+/* 글 내용 작성 영역 스타일 */
+.board_write .content textarea{
+    border-bottom: 2px solid black;
+    display: block; 
+    height: 30rem;
+    padding: 1.5rem;
+    border: 0px;
+    box-sizing: border-box;
+
+    /* 사이즈 조절 막기 */
+    resize: none;
+}
+
+/* 제출버튼 스타일 */
+.btn_wrap input{
+    display: inline-block;
+    min-width: 110px;
+    border: 1px solid black;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    font-size: 1.4rem;
+    box-sizing: border-box;
+    border-radius: 4px;
+
+/* 커서모양 - 손가락 */
+    cursor: pointer;
+}

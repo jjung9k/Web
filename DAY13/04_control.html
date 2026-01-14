@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS control</title>
+
+    <!-- 내부 스크립트 -->
+    <script>
+        // 이 영역 안에서는 JS의 문법체계를 따름
+
+        // 제어문 
+        //1. if
+        var age=25;
+        if(age<20) {
+            document.write('not adult');
+        }
+        document.write('<br>');
+
+        var num= 25;
+        if(num%2 ==0 ){
+            document.write('even number');            
+        }else {
+            document.write('odd number');            
+        }
+        document.write('<br>');
+
+        var score= 65;
+        if(score >90){
+            document.write('A <br>');
+            document.write('vaery good');
+        }else if( score >80){
+            document.write('B <br>');
+            document.write('good');
+        }else if( score >70){
+            document.write('C <br>');
+            document.write('so so');
+        }else if( score >60){
+            document.write('D <br>');
+            document.write('not good');
+        }else {
+            document.write('F <br>');
+            document.write('bad');
+        }
+        document.write('<br>');
+
+        // 파이썬과 다르게 소괄호 생략 불가
+        // if age<10{}  //error
+        
+        //파이썬 처럼 실행문이 한줄이면 옆으로 써도 되면 {}도 생략가능함
+        if(age>20) document.write('adult!! <br>');
+
+        document.write('<hr>');
+
+
+        //2. switch - case - break [ 파이썬 3.8버전 이상에서 match-case와 비슷한 문법]
+        // 특정변수값에 따라 코드를 분기하여 처리해주는 문법
+        var menu= 6;
+        switch(menu){
+            case 1:
+                document.write('walking');
+                break;
+            case 2:
+                document.write('running');
+                break;
+            case 3:
+                document.write('rest');
+                break;
+            default:
+                document.write('wrong menu number');
+        }
+        document.write('<br>');
+        document.write('<hr>');
+
+        //3. while
+        var n=0;
+        while(n<10){
+            document.write('Hello : ' + n + '<br>');
+            n+=1;
+        }
+
+        // 보통 while 문은 몇번 반복할지 모를때 사용함
+        // 예) 사용자의 입력이 exit 라고 될때까지.. 계속 입력받아라..
+        while(true){
+            name= prompt('이름을 입력하세요');
+            if(name =='exit' || name =='' || name=='null'){  // 입력없이 [확인] 누르면 '', [취소] 누르면 null
+            break;
+            }
+            document.write(name + "<br>");
+        }
+        document.write('<hr>');
+
+        //4. for  ~ 몇번 반복할지를 개발자가 미리 정할때...
+        for (var n=0; n<5; n++){  // n은 0부터.. n이 5보다 작을때까지.. 1씩 증가하면서 반복
+            document.write('good<br>');
+            
+        }
+        document.write('<br>');
+
+        // 구구단 출력에 활용
+        var dan= 7;
+        for(var i=1; i<10; i++){
+            document.write( dan + " X " + i + " = " + (dan*i) + "<br>");
+        }
+        document.write('<br>');
+        // for문을 사용할때, 반복횟수를 정하는 코드들의 위치를 다른 곳에 써도 됨
+        var m=0;
+        for(;m<5;) {
+            document.write('nice<br>');
+            m++;
+        }
+        // 반복문 사용의 특이한 모습은.. HTML 태그문 안에서 함께 사용될 수 있다는 것임
+        //아래 body 영역에서 실습....
+        
+        // 5. break, continue
+       
+    </script>
+
+</head>
+<body>
+
+    <hr>
+
+    <!-- JS in HTML -->
+    <table border="1">
+        <tr>
+            <th>번호</th>
+        </tr>
+        <tr>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>1</td>
+        </tr>
+        
+    </table>
+</body>
+</html>

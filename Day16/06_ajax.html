@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS ajax</title>
+
+    <script>
+        function aaa(){
+            // GET 방식으로 서버의 데이터를 요청
+            //1. 요청 객체 생성 
+            var xhr= new XMLHttpRequest();
+
+            // 4. 응답받으면 자동으로 실행되는 콜백함수를 등록
+            xhr.onreadystatechange= function(){
+                if( xhr.readyState==4 &&  xhr.status==200){
+                    document.getElementById('result').innerHTML= xhr.responseText;
+                }
+            }
+
+            //2. 서버와의 연결을 위한 무지개로드(stream) 열기
+            // xhr.open('GET','./data.txt', true);  //form 요소의 action 속성값이 썻던 서버파일명.
+            // 3번째 파라미터 : 비동기 작업 여부를 설정
+            // xhr.open('GET','04_event.html', true);
+            xhr.open('GET', './aaa.php?name=robin&email=bb@bb.com', true);
+
+            // 3.서버에 요청을 보내기
+            xhr.send();
+
+        }    
+        function bbb(){
+            // POST 방식으로 데이터를 보내고 응답받기 - ajax
+
+            var xhr= new XMLHttpRequest();
+            xhr.onreadystatechange= function(){
+                if(xhr.readyState==4 && xhr.status==200){
+                    document.getElementById('result').innerHTML= xhr.responseText;
+
+                }
+            }
+            xhr.open('POST', './bbb.php', true);
+
+            xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+            var data= 'name=hong&email=cc@cc.com';
+            xhr.send(data);
+        }
+    </script>
+</head>
+<body>
+
+    <h3>AJSX 를 이용한 서버와의 통신</h3>
+
+    <p>
+        <button onclick="aaa()">GET방식</button>
+        <button onclick="bbb()">POST방식</button>
+    </p>
+
+    <hr>
+    <!-- 응답결과를 보여줄 요소 -->
+    <div id="result"></div>
+
+    
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Object</title>
+
+    <script>
+        // JS에서 객체를 만드는 2가지 방법
+        // 1. 리터럴 객체 [객체의 멤버를 설계하면서 생성하는 방식]
+        var person= {
+            // 멤버변수 - 속성 property
+            name: 'sam',
+            age: 20,
+        
+        // 멤버함수 - 메소드 method
+            show: function() {
+                // 멤버를 사용할때는 반드시 this. 키워드 필요! [파이썬 self.]
+                document.write('show: ' + this.name + "," + this.age + "<br>");
+            }
+
+            // 일반 선언적 함수로 메소드를 만들려고 하면 문법 에러.
+            // function aaa(){}
+        }
+        
+        // 객체 멤버(속성) 출력
+        document.write('name : ' + person.name + "<br>");
+        document.write('age : ' + person.age + "<br>");
+
+        //객체 멤버함수 호출
+        person.show();
+
+        // 만약 새로운 person 객체가 또 필요하면.. 다시 멤버를 설계하면서 생성해야 함.
+        var person2= {
+            name: 'robin',
+            age: 25,
+            show: function() {
+                document.write('show : ' + this.name + "," + this.age + "<br>");
+            },
+            // 파라마터와 리턴이 있는 함수 만들어보기... 두수를 받아 덧셈 결과를 리턴해 주는 기능함수
+            add:function(a,b){
+                return a+b;
+
+            }
+        }
+        person2.show();
+
+        // JS의 객체는 생성된 후에도 언제든 멤버를 추가할 수 있음
+        person2.address= 'seoul';
+        document.write(person2.address + "<br>");
+
+        // 새로운 속성 값이 추가 되면 기존의 출력기능 show()가 이 값을 제대로 출력하지 못함.
+        person2.show();
+
+        // [이름, 나이, 주소] 모두를 출력하는 기능함수도 새로이 추가해야 할 수 있음
+        person2.output= function(){
+            // 새로 추가한 메소드에서도 멤버접근은 this. 키워드 필요
+            document.write(this.name + ":" + this.age + "-" + this.address + "<br>");
+        }
+        person2.output();  // 호출
+
+
+        var n= person2.add(3, 5);
+        document.write(n+ "<br>");
+
+        document.write('<hr>');
+        // 리터럴 객체는 객체를 만들때 마다 설계를 다시 해야 함. 이거 짜증 난다.
+
+        // 2. 생성자 함수 [ 객체의 멤버를 설계해 놓고 필요할때 NEW 키워드로 객체 생성]
+        // [이름, 나이, 전공] 정보를 묶어서 관리하는 객체의 설계도 작성하기.
+        function Student() {  // 생성자함수와 일반함수의 식별을 용이하게 하기위해 첫글자를 대문자로 쓰는 파스칼표기법을 권장 함.
+            // 멤버 변수 [this. 키워드 함께]
+            this.name= 'park';
+            this.age= 30;
+            this.major= 'web';
+
+            //멤버함수
+            this.show= function(){
+                document.write('student show : ' + this.name + "," + this.age + "," + this.major + '<br>');
+            }
+            // 멤버변수에 파라미터로 받을 값을 대입해 주는 기능메소드
+            this.setMembers= function(name, age, major){
+                this.name= name;
+                this.age= age;
+                this.major= major;
+            }
+        }
+        // 설계도(생성자 함수)를 작성했다고 해서 제품(객체)이 만들어진 것이 아님.
+        // 사용하려면 설계도로 제품을 생성 [즉, 생성자 함수로 객체를 생성]
+        var s= new Student();
+        s.show();
+
+        // 같은 모양의 다른 속성값을 가진 객체를 사용하고 싶다면...
+        var s2= new Student();
+        s2.name='lee';
+        s2.age= 20;
+        s2.major= 'data analysis';
+        s2.show();
+
+        // 객체를 생성하고 속성값을 여러줄로 대입하는 것이 불편하다. 줄이 길어져서.. 코드가 지저분해 짐
+        var s3= new Student();
+        s3.setMembers('kim', 23, 'AI');
+        s3.show();
+
+        // 매번 객체 생성 후에 값을 대입하는 기능을 호출하는 행위가 번거로움.
+        // 생성자 함수를 만들때 멤버값 파라미터로 전달 받기.
+        function Human(name, age, address){
+            this.name= name;
+            this.age=age;
+            this.address= address;
+            this.show= function(){
+                document.write(this.name + "," + this.age + "," + this.address + "<br>");
+            }
+            // 멤버변수를 만들때 this. 를 써야 하는데 실수로 var 키워드를 사용한 경우
+
+            var tel='01012345678';  // 이건 멤버변수가 아니고 이 생성자함수 지역안에서 사용하는 지역변수임
+            // 멤버함수 만들때 실수로 선언적 함수를 만들 수도 있음. -- 이 생성자 함수 지역안에서만 호출이 가능함(지역함수임)
+
+        function aaa(){
+            document.write('aaa local function');
+        }
+        // var 키워드 없이 변수만들기 - 전역 변수
+        hobby= 'swimming';
+    }
+        var h= new Human('hong', 23, 'busan');
+        h.show();
+
+        document.write(h.tel + "<br>");  // 지역변수 tel은 인식 못함. 출력은? undefinded
+        document.write(hobby + "<br>");   // 전역변수
+
+        document.write('<hr>');
+
+        // 객체의 멤버변수의 값이 또 다른 객체일 수도 있음.
+        // 리터럴객체로 실습해 보기.
+        var flight= {
+            airline: 'Korean air',
+            number: 777,
+            arrival: {
+                nation: 'japan',
+                city: 'tokyo',
+            }
+        }
+        document.write(flight.airline + '<br>');
+        document.write(flight.number + '<br>');
+        document.write(flight.arrival.nation + "<br>");
+
+        // 객체의 멤버변수 접근을 연관배열(파이썬의 딕셔너리와 비슷)의 식별자 방식으로도 가능함.
+        document.write(flight['airline'] + '<br>');
+
+        document.write('<hr>');
+
+        //in 연산자 -- 객체안에 특정 이름의 멤버가 존재하는지 여부(true/false)
+        document.write( 'airline' in flight );
+        document.write( "<br>");
+        document.write( 'name' in flight);
+        document.write( "<br>");
+        if( 'tel' in h) {
+            document.write('tel 속성이 존재합니다.');
+            document.write(h.tel);
+        }
+
+
+        // object.create() 기능.. 객체의 복제 기능 - 리터럴 객체도 하나만 설계하고 여러개 사용가능
+        var pp= {
+            name: 'sam',
+            age: 20,
+            show: function(){
+                document.write(this.name + "," + this.age + "<br>");
+            }
+        }
+
+        //clone...
+        var pp2= Object.create(pp);
+        pp2.name= 'robin';
+        pp2.age= 30;
+
+        pp.show();
+        pp2.show();
+
+        document.write('<hr>');
+
+        // .propotype - 같은 객체들이 공유하고 싶은 멤버를 만들때 사용하는 특별한 멤버!
+        function Person(name, age){
+            this.name= name;
+            this.age= age;
+            // 멤버함수 -- 객체마다 이 함수 코드가 존재해서 메모리를 차지함(비효율)
+            // this.show= function() {
+            //      document.write(this.name + "<br>");
+            // }
+        }
+
+        // Person 생성자함수로 만든 객체들이 공유하면서 사용할 멤버메소드 추가하기
+        Person.prototype.show= function(){
+            document.write(this.name + ";" + this.age + "<br>");
+        }
+
+        var p1= new Person('sam', 20);
+        var p2= new Person('robin', 30);
+
+        p1.show();
+        p2.show();
+
+
+        // 여기까지 사용자(개발자) 정의 객체를 실습해 봤음.
+
+        // 이제는 JS 에 이미 내장 된 객체 알아보기
+        // 단, 내장된 것들 중에 이미 객체로 생성된 것들도 있고 [document, window,....]
+        // 객체를 만들기 위해 생성자함수(설게도)만 있는 것도 있음. 이런 친구들은 .. new 키워드로 객체를 생성하여 사용해야 함.
+        // 이런 생성자 함수 중에서 유용한 것들을 알아보기.
+        // Date, Number, String, Math, Array...
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

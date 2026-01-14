@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS event</title>
+
+    <script>
+        // 이벤트를 처리하는 3가지 방법
+        // 1. html 요소에 속성으로 콜백함수 지정. <button onclick="aaa()">
+        // 2. JS 에서 요소를 찾아와서 이벤트 콜백 속성에 함수를 지정.
+        // 3. 요소에 특정 이벤트처리를 듣는 리스너를 등록하는 방식(권장)
+
+        // load 이벤트 알아보기: 요소가 DOM 객체로 만들어졌을때 발생되는 이벤트
+        // body 영역에 있는 h2요소를 찾아와서 글씨를 추가해 보기   - 적용안됨.
+    document.getElementById('hh').innerHTML='Hello';
+        // 아직 body 영역의 로딩이 완료되지 않았기에 h2요소가 없음.
+
+        // 1. body요소가 로딩완료 되면 발동하는 load 이벤트에 반응하는 함수를 등록
+        // (이벤트 처리 방법1.) html 요소에 속성으로 load 이벤트 처리하기.
+    function loaded(){
+        document.getElementById('hh').innerHTML='Nice to meet you.';
+        
+            // h2요소를 클릭하여 글씨 변경 - 클릭이벤트 처리하기
+            // (이벤트 처리 방법2.)
+        document.getElementById('hh').onclick= function(){
+            document.getElementById('hh').innerHTML="good day.";                
+        }
+
+            //(이벤트처리 방법3. )
+        document.getElementById('hh').addEventListener('dblclick', function(){
+            alert('double clicked!!');                       
+        });     
+    }
+
+    </script>
+</head>
+<body onload="loaded()">
+
+<h2 id="hh"></h2>
+
+<!-- 이벤트 처리 방식 2,3 의 차이를 알아보기 -->
+    <button id="b1">click</button>
+    <script>
+        var btn=document.getElementById('b1');
+
+        btn.onclick= function(){
+            alert('event 1');
+        }
+        btn.onclick= function(){
+            alert('event 2');
+        }
+        // 마지막 콜백함수 코드만 실행 됨.
+    </script>
+
+    <button id="b2">click2</button>
+    <script>
+        var btn= document.getElementById('b2');
+
+        btn.addEventListener('click,', function(){
+            alert('event #1 ');
+        })
+        btn.addEventListener('click,', function(){
+            alert('event #2 ');
+        })
+        // 등록 된 순서대로 여러작업이 실행 됨.
+
+    </script>
+
+    <hr>
+    <!-- 이벤트의  종류들 [input요소 이벤트, 마우스 이벤트, 키워드 이벤트 등...] -->
+    <!-- 2. input요소의 이벤트 -->
+    <input type="text" id="in1" onfocus="aaa()">
+    <input type="text" id="in2" onblur="bbb()" onchange="ccc()">
+    <script>
+        function aaa(){
+            document.getElementById('in1').value="aaa";  // 기본값 미리 넣어놓기
+        }
+        function bbb(){
+            alert('blur');
+        }
+        function ccc(){
+            alert('change');
+        }
+    </script>
+    <hr>
+    <!-- 사용자의 입력을 완료했을때.. 써있는 글씨를 모두 대문자로 자동 변환해 줄때 사용[ex. 국민은행 아이디 입력시] -->
+    <input type="text" id="in3" placeholder="아이디를 입력하세요.(자동 대문자 변환)" onchange="changeUp()" >
+    <script>
+        function changeUp(){
+            var in3= document.getElementById('in3');
+            in3.value=in3.value.toUpperCase();
+            
+        }
+    </script>
+    <hr>
+    <!-- 마우스 이벤트 -->
+    <div style="width: 200px; height: 100px; background-color: yellow;" onmouseover="over(this)" onmouseout="out(this)" onmousemove="move(this)"></div>
+    <script>
+        function over(e){
+            e.style.backgroundColor="lightgreen";
+            e.style.border="2px solid red";            
+        }
+        function out(e){
+            e.style.backgroundColor='yellow';
+            e.style.border='';
+        }
+        var a=0;
+        function move(e){
+            a+=1;   // a++;
+            e.innerHTML= a;
+        }    
+    </script>
+
+    <!-- 마우스 좌표를 표시 -->
+    <div style="width: 200px; height: 100px; background-color: lightcyan;" id="kk"></div>
+    <script>
+        document.getElementById('kk').addEventListener('mousemove', function(e){  // 파라미터 e 
+            var s='' ;
+            s += 'client coord: ' + e.clientX + "," + e.clientY +"<br>";
+            s += 'screen coord: ' + e.screenX + "," + e.screenY +"<br>";
+            s += 'client coord: ' + e.offsetX + "," + e.offsetY +"<br>";
+
+            document.getElementById('kk').innerHTML= s;              
+        });
+
+    </script>
+    <!-- 마우스 다운/업 -->
+    <button id="b3">button</button>
+    <script>
+        var btn= document.getElementById('b3');
+
+        btn.addEventListener('mousedown', function(){
+            btn.style.backgroundColor='#ff0000';
+            btn.style.color="#ffff00";
+            btn.style.fontSize="2em";
+        });
+
+        var up= function(){
+            btn.style.backgroundColor='';
+            btn.style.color="";
+            btn.style.fontSize="";
+        }
+        btn.addEventListener('mounseup', up);        
+    </script>
+
+    <!-- 키보드 이벤트 -->
+    <hr>
+    
+    <input type="text" onkeydown="ee()">
+    <input type="text" onkeyup="ff()">
+    <input type="text" onkeydown="gg()">
+    <script>
+        function ee() {
+            // 키보드 중에서 어떤 키를 눌렀는지 알고 싶다면,.. window 객체의 멤버인 event객체에게....
+            alert(window.event.keyCode+ ": " + String.fromCharCode(event.keyCode));
+        }
+        function ff(){
+            alert(window.event.keyCode+ " : " + String.fromCharCode(event.keyCode));
+        }
+        function gg(){
+            alert('up');
+        }
+    </script>
+
+    <hr>
+    <!-- 입렵폼의 입력 후 유효성 검사 [아이디, 비밀번호 등 특정 패턴이 맞는지 검사!] -->
+    <!-- 유효성 검사를 하려면 [onchange() + 정규표현식] -->
+  
+    <h3>정규 표현식 (Regular Expression) </h3>
+
+    <input type="text" id="in4">
+    <button onclick="checkReg()">check</button>
+    <h3 id="hhh">결과</h3>
+
+    <script>
+        
+        function checkReg(){
+            //  검증용 정규표현식 만들기 ( 특정 패턴 정하기)
+            var regExp;
+
+            // 정규표현식 연습- 여러개 예제..
+            regExp= /a/  //a가 포함된 모든 글자......
+            regExp= /A/  //A가 포함된 모든 글자...... 대문자가 하나라도 나오면 OK!
+            regExp= /ab/  //ab가 포함된 모든 글자...... ok
+            regExp= /^a/  //a로 시작된 모든 글자......
+            regExp= /^[a-z]/  //영어소문자로 시작된 모든 글자
+            regExp= /a$/  //a로 끝나는 모든 글자
+            regExp= /ab$/  //ab로 끝나는 모든 글자
+            regExp= /^a$/  //오직 a 한 글자만 가능
+            regExp= /^ab$/  // 오직 ab...
+            regExp= /^[a-z]$/  // 오직 영문자 한글자...
+            regExp= /^[a-z]*$/  // 
+            regExp= /^[a-zA-Z0-9]$/   // 오직 영문자 한글자..
+            regExp= /^[a-z]$/   // 오직 영문자 한글자..
+            regExp= /^[a-z]{4,}$/   // 오직 영문자 한글자..
+            regExp= /^\w[a-z]$/   // 오직 영문자 한글자..
+            regExp= /^[a-z]*$/   // 오직 영문자 한글자..
+            regExp= /^[a-z]+$/   // 오직 영문자 한글자..
+            regExp= /^\w[a-z]?$/   // 오직 영문자 한글자..
+            regExp= /^[a-z]$/   // 오직 영문자 한글자..
+            regExp= /^[a-z]$/   // 오직 영문자 한글자..
+            regExp= /^\w[0-9]$/   // 숫자 1개...
+            regExp= /^[5-9]$/   // 숫자(5~9개) 1개
+            regExp= /^\d$/   // 숫자 1개
+            regExp= /^\d\d\d$/   // 숫자 3개
+            regExp= /^\d\d\da\d\d\da\d\d$/   // 숫자 3개 다음 ㅁ 숫자 3개
+            regExp= /^\d\d\d\d-\d\d-\d\d$/   // 생년월일 입력 패턴 ####--##-##
+
+
+
+
+            
+            // 사용자 입력이 정규표현식의 패턴에 맞는지 검사(유효성 검사)
+            var value= document.getElementById('in4').value;
+
+            if( regExp.test(value)){
+                document.getElementById('hhh').innerHTML= "OK"
+
+            }else{
+                document.getElementById('hhh').innerHTML= "요구하는 형식이 아닙니다."
+
+            }
+        }
+    </script>
+
+
+
+
+</body>
+</html>

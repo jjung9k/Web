@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Bom</title>
+
+    <!-- BOM(Brower Object Model) : 웹 브라우저의 기능들을 제어하는 객체들 -->
+
+    <!-- 1. window (최상위 객체) -->
+    <!-- 주요 메소드들 -->
+
+    <!-- 1) open, close : 새로운 웹문서 열기/닫기  -->
+    <button onclick="aaa()">naver</button>
+    <script>
+        function aaa(){
+            // window.open();
+            // window.open('https://www.naver.com');            // 새탭으로 열림. target="_blank"(디폴트로 되어 있음)
+            // window.open('https://www.naver.com', '_self');   // 두번째 파라미터 ; target
+            // 별도의 브라우저 창으로 열고 싶다면 세번째 파라미터 필요
+            window.open('https://www.naver.com', '_blank', 'width=500, heigth=200, left=200, top=150'); 
+        }
+    </script>
+
+    <!-- 빈 윈도우창을 열고/닫기 -->
+    <button onclick="bbb()">open window</button>
+    <button onclick="ccc()">close window</button>
+    <script>
+        var win;         // 전역변수
+        function bbb(){    //별도로 열린 윈도우를 win 변수에 대입
+            win= window.open('','', 'width=500, height=200');
+            win.document.write('오늘의 특가');
+        }
+        function ccc(){
+            win.cloes();
+        }
+        function ddd(){
+               // 특정 위치로 이동
+            win.moveTo(300, 100);  // x, y 좌표
+        }
+        function eee(){
+            // 현재 위치로부터 이동량 지정
+            win.moveBy(10, 20);   //x축, y축
+        }
+    </script>
+
+    <!-- 2) 별도의 윈도우 창 움직이기 -->
+    <button onclick="ddd()">move to</button>
+    <button onclick="eee()">move by</button>
+
+    <hr>
+    <!-- 3) SetTimeout, setInterval, clearInterval -->
+     <button onclick="fff()">3초후에 경고창 보이기</button>
+    <script>
+        function fff(){
+            window.setTimeout(function(){
+                alert('3초 경과!!');
+            }, 3000)  // 3000ms (3초)
+        }
+    </script>
+    <hr>
+
+    <input type="text" value="0" id="in1"><br><br>
+    <button onclick="ggg()">1초마다 카운트 증가</button>
+    <button onclick="hhh()">1초마다 카운트 종료</button>
+    <script>
+        // 1초마다 카운팅을 증가하는 코드를 가진 함수 설계(정의)
+        function show(){
+            var in1= document.getElementById('in1');
+            in1.value= window.parseInt(in1.value) + 1;  // 사용자의 모든 입력은 문자열
+        }
+
+        var a=undefined;
+        function ggg(){
+            if(a!=undefined){
+                return;
+            }
+            // window.setInterval();
+            // window 최상위 객체는 브라우저 자체이기에 생략이 가능함.
+            a= setInterval( show, 1000 ); //show()로 호출하면 안 됨. show 함수를 등록.
+        }
+        function hhh() {
+            clearInterval(a);
+            a=undefined;
+        }
+
+    </script>
+
+    <!-- 2. document : 웹페이지의 문서영역을 담당. 원래 명칭은 [window.document.write()] -->  
+
+    <!-- 3. screen -->
+    <hr>
+    <script>
+        // 모니터에 사이즈 정보 담당 
+        document.write('화면 해상도: ' + window.screen.width + "," + window.screen.height + "<br>");
+        document.write('작업표시줄을 제외한 화면 사이즈: ' + window.screen.availWidth + "," + window.screen.availHeight + "<br>");
+    </script>
+    <button onclick="fullwindow()">전체 화면 사이즈 새로운 윈도우 열기</button>
+    <script>
+        function fullwindow(){
+            var spec= "width="+screen.availWidth + "," + "height="+screen.availHeight;
+            open('', '', spec);
+        }
+    </script>
+    <hr>
+
+    <!--  -->
+    <script>
+        document.write('브라우저 전체사이즈: '+ window.outerWidth + "," + window.outerHeight+ "<br>");
+        document.write('브라우저 document영역 사이즈: '+ window.innerWidth + "," + window.innerHeight+ "<br>");
+    </script>
+    
+    <!-- 4. location : URL 정보 -->
+    <hr>
+    <h3>location 객체 속성들</h3>
+    <script>
+        document.write(window.location.href + "<br>");    // URL 전체 경로
+        document.write(window.location.protocol + "<br>");   // 프로토콜 명: http, ftp, file
+        document.write(window.location.pathname + "<br>");   // 경로
+        document.write(window.location.host + "<br>");   // 도메인 주소
+    </script>
+    <button onclick="aa()">새로운 문서 열기</button>
+    <button onclick="bb()">새로운 문서를 대체해서 열기</button>
+    <button onclick="cc()">현재 문서 다시 열기(새로고침)</button>
+    <!-- location 객체의 주요 기능메소드 -->
+    <script>
+        function aa(){
+            location.assign('https://www.naver.com');  // 뒤로가기 있음
+        }
+        function bb(){
+            location.replace('https://www.naver.com');  // 뒤로가기 없음
+        }
+        function cc(){
+            location.reload();
+        }
+    </script>
+
+    <!-- 5. history : 방문 기록 -->
+    <hr>
+    <script>
+        document.write('방문한 페이지 수: '+ history.length+ "<br>");
+
+        function dd(){
+            history.back();
+        }
+        function ee(){
+            history.forward();
+        }
+        function ff(){
+            history.go(2);   // 음수(-)면 뒤로 감
+        }
+    </script>
+    <button onclick="dd()">뒤로  </button>
+    <button onclick="ee()">앞으로</button>
+    <button onclick="ff()">2칸 앞으로</button>
+
+    <!-- 6. navigator : 브라우저의 정보... 기능은 없지만.. 나중에 새로운 브라우저의 기능이 생길때 이 객체 멤버로 추가됨(ex. geolocation(위도, 경도), webcam 사용) -->
+    <hr>
+    <script>
+        document.write('브라우저의 코드명: ' + navigator.appCodeName + "<br>");
+        document.write('브라우저의 종류: ' + navigator.appName + "<br>");
+        document.write('브라우저의 버전: ' + navigator.appVersion + "<br>");
+        document.write('브라우저의 플랫폼: ' + navigator.platform + "<br>");
+        document.write('브라우저의 에이전트: ' + navigator.userAgent + "<br>");
+
+    </script>
+
+
+
+
+</head>
+<body>
+    
+</body>
+</html>

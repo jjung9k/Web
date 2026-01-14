@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS exception</title>
+
+    <script>
+        // 프로그램에서 문제가 발생 되는 것을 말하는 용어 2가지
+        // 오류 error : 치명적인 문법 문제여서 코드의 어디서 발생하든 처음부터 실행되지 않음.
+        // 예외 exception: 예외상황 발생 전까지는 실행 되다가 그 상황이 되면 멈추고 더이상 진행하지 않음.
+
+        // 예외처리
+        document.write('예외처리에 대해 알아 봅니다.<br>');
+
+        // 예외상황 - 존재하지 않느 기능(함수)를 호출해 보기
+        // aler();  // 여기 다음부터는 실행되지 않음
+
+        // 예외발생 했다고 해서 그 아래에 있는 모든 코드가 멈추는 것이 아주 불편하다.
+        // 그래서 예외가 발생하더라도 코드가 멈추지 않도록 하는 문법(예외처리)
+        try{
+            // alert();  // 정상 입력(OK)
+            aler();  //예외 발생 
+        }catch(e){  // 파라미터 e : 예외 정보를 가진 객체
+            document.write('예외발생!!');
+        }
+        
+        document.write('<hr>');
+
+        // 예외발생 여부와 상관없이 실행할 내용이 있다면... finally 영역사용
+        try{
+            aler('aaa');
+            //alert();
+        }catch(e){
+            document.write(e + "<br>");
+        }finally{
+            document.write('여기는 무조건 실행되는 영역<br>');
+            document.write('서버 연결을 종료하거나 파일연결 작업을 종료하는 코드를 작성<br>');
+        }
+            // 예외처리는 통상. 사용자 입력 자료형 변환, 파일입출력, 서버 연결 등에 많이 사용 된다.
+
+        document.write("<hr>");
+
+        //throw - 개발자가 예외를 강제로 만들어서 던지는 기법(직접 예외발생 시키는 문법) [파이썬에서는 raise]
+        // 예)
+        try{
+            var a=5;
+            var b=10;
+
+            var c= a-b;
+            if(c<0){
+                throw "음수결과는 나오면 안됨"; // 예외를 만들어던지기
+            }
+
+            document.write('결과: ' + c + "<br>");
+        }catch(e){
+            document.write('error : ' + e + "<br>");
+        }
+        
+
+        document.write('<br> 스크립트 영역 종료 <br>');
+
+
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

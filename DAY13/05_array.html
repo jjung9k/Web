@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Array</title>
+
+    <!-- 내부 스크립트 -->
+    <script>
+
+        //배열 : 여러개의 값을 저장하는 변수들을 묶어서 만드는 문법
+        //마치 파이썬의 list, tuple, dictionary와 비슷한 문법
+
+        //JS에서 배열을 만드는 2가지 방법
+        //1. 리터럴 배열( literal array) : 써 있는 그대로의 배열이라는 뜻 --> 파이썬의 리스트 생성방식과 매우 비슷
+
+        var aaa= [10, 20, 30];
+        document.write(aaa[0] + "<br>"); // 배열의 각 요소들의 방번호(index)로 접근
+        document.write(aaa[1] + "<br>");
+        document.write(aaa[2] + "<br>");
+        document.write(aaa + "<br>");  // 값들이 , 로 구분되어 출력됨
+
+        // 배열 요소의 값 변경도 index 번호를 이용
+        aaa[1]= 200;
+        document.write(aaa+ "<br>");              
+
+        //배열의 요소들에 서로 다른 자료형 저장도 가능
+        var bbb=[10, 'sam', true];
+        document.write(bbb[0] + "<br>");
+        document.write(bbb[1] + "<br>");
+        document.write(bbb[2] + "<br>");
+
+        // 존재하지 않은 방번호를 사용해도 에러는 아님.
+        document.write(bbb[3] + "<br>");  // undefined
+
+        //JS 의 배열을 파이썬 리스트처럼 개수변경이 가능함.
+        document.write(bbb.length + "개<br>")  // 배열객체의 멤버변수 중 요소개수를 알려주는 .len 속성이 존재함.
+
+        //새로운 요소를 추가하기
+        bbb[5]= 100; //5번방에 100을 새로 추가..사이에 비어 있는 [3][4] 방을 알아서 추가해 줌
+        document.write( bbb.length + "개<br>")
+        document.write( bbb[0] + "<br>");
+        document.write( bbb[1] + "<br>");
+        document.write( bbb[2] + "<br>");
+        document.write( bbb[3] + "<br>");  //undefined
+        document.write( bbb[4] + "<br>");  //undefined
+        document.write( bbb[5] + "<br>");  
+        document.write('<hr>');
+
+        //2. Array 클래스를 객체로 생성하여 사용 - 객체 생성 키워드 new
+        var ccc= new Array(10, 20, 30);
+        document.write(ccc[0] + "<br>");
+        document.write(ccc[1] + "<br>");
+        document.write(ccc[2] + "<br>");
+        document.write("<br>");        
+
+        //자료형이 다른 요소들을 저장하는 것도 가능
+        var ddd= new Array(100, 'robin', false);
+        // 요소들을 반복문으로 접근해 보기
+        for(var i=0; i<3; i++) {    // i: 0, 1, 2 
+            document.write(ddd[i] + '<br>');
+        }
+        document.write('<br>');
+
+        // 위 for 반복의 수식 입력에 실수할 여지가 너무 많아...
+        // 모든 요소를 반복적으로 접근해야 한다면... for in 기법(for each문법이라고도 부름)을 권장 함.
+        for(var idx in ddd){   // 배열의 인덱스 번호를 차례로 줌
+            document.write(ddd[idx] + "<br>");
+        }
+        document.write('<br>');        
+
+        //배열 객체를 만든 후에 요소들을 추가해도 됨
+        var eee= new Array();  
+        document.write('배열 개수: '+ eee.length+"<br>"); // 빈 배열 생성, 결과는 0
+        eee[0]= 1000;
+        eee[1]= 2000;
+        eee[2]= 'apple';
+        document.write('배열 개수: ' + eee.length + "<br>");  // 결과: 3(마지막 방번호가 2번이라.. 2 + 1 = 3)
+       
+        //리터럴 배열도 빈 배열 생성 가능함
+        var fff= [];  // 자동 new Array()
+        document.write('배열 개수: ' + fff.length + "<br>");   // 결과: 0 (fff에 값을 넣기 직전에 출력 했기때문에 '0'이 나오는 것)
+        
+        fff[0]= 'banana';   
+        fff[1]= 'orange';
+        fff[2]= 'blue berry';
+        fff[3]= 'apple';
+        for(var i=0; i<fff.length; i++){
+            document.write(fff[i] +"<br>");
+        }
+        document.write('<br>');
+
+        document.write('<hr>');
+
+        // 지금까지 확인한 배열은 파이썬의 리스트와 비슷하게 '인덱스'번호로 요소의 위치를 구분함. 이런 배열을 number array (넘버 배열)라고부름.. 통상은 '배열'이라고 부름
+        // 파이썬의 딕셔너리 처럼 '인덱스번호' 대신에 '키(식별자)'를 사용하는 배열이 JS에도 존재함
+        // '연관배열' associated array
+
+        var ggg= new Array(); // 빈 배열
+        ggg['aa']= 10; // index 번호 대신에 문자열 key로 위치 지정
+        ggg['bb']= 20;
+        ggg['cc']= 30;
+
+        document.write(ggg['aa'] + "<br>");
+        document.write(ggg['bb'] + "<br>");
+        document.write(ggg['cc'] + "<br>");
+        document.write(ggg + "<br>");  // 연관배열은 표시 안 됨
+
+        // 리터럴 배열로 연관배열 생성 가능
+        var hhh=[];
+        hhh['name']= 'sam';
+        hhh['age']= 20;
+        hhh['address']= 'seoul';
+
+        document.write(hhh['name'] + "<br>");
+        document.write(hhh['age'] +'<br>');
+        document.write(hhh['address'] + '<br>');
+        document.write('<hr>');
+
+        //반복문으로.. 할수 있나?
+         /* for(var i=0; i<3; i++) {
+            document.write(hhh[??] + '<br>');
+        } */
+        // for in 문법으로 [인덱스 번호가 차례로 오는 대신.. 식별자 key가 옴]
+        for(var key in hhh) {
+            document.write(hhh[key] + "<br>");
+        }
+        document.write('<br>');
+
+        // ☆☆ 연관배열을 만들면서 값을 같이 대입하기 - 마치 파이썬의 딕셔너리 처럼...
+        var mmm= {'aa':10, 'bb':20};     // 대괄호 아님!! 중괄호로 사용해야 됨
+        document.write(mmm['aa'] + "<br>");
+        document.write(mmm['bb'] + "<br>");
+        document.write('<br>'); 
+
+        // 각 요소에 접근할때 [] 사용 대신에 .연산자를 써도 됨
+        document.write(mmm.aa + '<br>');
+        document.write(mmm.bb + '<br>');
+        document.write('<br>');      
+
+
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

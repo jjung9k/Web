@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS DOM</title>
+</head>
+<body>
+    
+    <script>
+        // DOM [Document object Model]: 웹문서의 하얀영역의 HTML 요소들을 객체로 모델링 
+        // DOM 계층구조를 DOM Tree 라고 부르며 그 구성물들을 node 라고 부름
+        // node의 종류: element node, attribue node, text node
+        // 이 node들의 관계: parent node, child node, sibling node --> 이 관계를 이용하여 요소들을 순회하며 제어 가능.   
+    </script>
+
+    <!-- [1] DOM 노드의 추가/삭제 동적으로 수행하기. -->
+    <button onclick="aaa()">add Text node</button>
+    <button onclick="bbb()">add Element node</button>
+    <button onclick="ccc()">remove child</button>
+    <p id="p1"></p>
+    <script>
+        function aaa() {
+            // 텍스트 노드를 동적으로 생성하여 p요소에 추가하기
+            // 1. 노드생성
+            // var node= document.createTextNode('This is text');
+            var node= document.createTextNode('<a href="">하이퍼링크</a>');
+            //2. 위 노드를 붙힐 요소를 찾아오기
+            var p= document.getElementById('p1');
+            //3. p요소의 자식으로 텍스트노드를 추가
+            // p.appendChild(node);
+
+            //4. 텍스트노드 생성 및 추가를 한방에..
+            p.textContent += '<a href="">하이퍼링크</a>';
+
+        }
+
+        function bbb() {
+            // 요소노드를 만들고 P요소에 추가하기
+            var node= document.createElement('a');  // a 요소 생성
+            // a 요소 노드에 속성을 생성하여 추가
+            var attr= document.createAttribute('href');
+            attr.value= "https//www.naver.com";
+            node.setAttributeNode(attr);
+
+            // 텍스트 노드를 만들어 a요소에 추가
+            var text= document.createTextNode('네이버');
+            node.appendChild(text);
+
+            //p요소를 찾아서 a요소를 추가
+            var p= document.getElementById('p1');
+            // p.appendChild(node);
+
+            //위 모든 작업을 단 한 줄로...
+            p.innerHTML += '<a href="https://www.naver.com">네이버</a>';
+            p.innerHTML += "글씨로 써도 됨"
+        }
+        function ccc() { 
+            // P요소를 찾아서 그 자식요소를 제거!
+            var p= document.getElementById('p1');
+            p.removeChild(p.firstChild);
+        }
+    </script>
+
+    <hr>
+    <!-- [2] 요소를 찾아와서 속성을 변경하는 실습 -->
+    <style>
+        img{width: 120px;}
+    </style>
+    <img src="./image/newyork.jpg" alt="newyork image" id="kk">
+    <button onclick="changeImage()">change image</button>
+    <script>
+        function changeImage(){
+            var e= document.getElementById('kk');
+            e.src="./image/paris.jpg";
+            document.getElementById('kk').src='./image/paris.jpg';
+        }
+    </script>
+    <hr>
+
+    <!-- [3] 요소의 스타일 변경해 보기 (요소 찾기를 DOM tree 순회기법) -->
+    <p>this is paragraph</p>
+    <button onclick="changeStyle(this)">스타일 변경</button>
+    <script>
+        function changeStyle(e) {
+            // 클릭한 버튼요소(파라미터로 받기) 의 이전 형제요소를 찾아와서 스타일 속성을 변경
+            var p= e.previousElementSibling;
+            p.style.color="red";
+            p.style.fontWeight='bold';
+            p.style.fontFamily='cursive';
+        }
+    </script>
+
+    <hr>
+
+    <!-- [4] 스타일 변경할때 속성값을 하나씩 JS로 설정하기 불폄함. class 속성을 이용하여 한번에 스타일 적용 -->
+    <style>
+        .ss{
+
+            color: blue;
+            font-weight: bold;
+            font-family: monospace;
+        }
+
+    </style>
+    <p id="pp">Hello wrold</p>
+    <button onclick="change()">스타일 변경</button>
+    <script>
+        function change(){
+            document.getElementById('pp').className='ss';
+
+        }
+    </script>
+
+    <!-- [5] 요소를 숨기는 스타일 변경 -->
+    <h2>This is Heading element</h2>
+    <button onclick="show()">show</button>
+    <button onclick="hide()">hide</button>
+    <button onclick="toggle()">toggle</button>
+    <script>
+        function show() {
+            document.getElementsByTagName('h2')[0].style.visibility='visible';
+        }
+
+        function hide() {
+            document.getElementsByTagName('h2')[0].style.visibility='hidden';
+           
+        }
+        function toggle() {
+            // hidden 인지 visible 인지를 알아야 함.
+            var v= document.getElementsByTagName('h2')[0].style.visibility;
+            document.getElementsByTagName('h2')[0].style.visibility= (v=='hidden')? 'visible' : 'hidden';
+
+        }
+    </script>
+
+    <hr>
+
+    <!-- [6] HTML 에 새로 생긴 dom 요소를 찾는 메소드: css의 선택자표기법 사용이 가능 -->
+    <h3 id="ee">aaa</h3>
+    <button onclick="eee()">글씨 변경</button>
+    <script>
+        function eee(){
+            document.querySelector("#ee").innerHTML="Hello css";
+            
+        }
+    </script>
+    <hr>
+
+    <h1 class="tt">TITLE</h1>
+    <p class="'tt">this is maessage</p>
+    <strong class='tt'>강조합니다.</strong>
+    <br>
+    <button onclick="www()">글씨 색상 모두 변경</button>
+
+    <script>
+        function www(){
+            var es= document.querySelectorAll('.tt');    // 선택자를 이용해서 도큐먼트에서 선택...
+            for(var i=0; i<es.length; i++){
+                es[i].style.color='green';
+            }                
+        }
+    </script>
+    <hr>
+
+    <!-- [7] 입력요소에 써 있는 사용자의 값 확인 -->
+    <input type="text" name="title" placeholder="제목입력">
+    <input type="text" name="message" placeholder="메세지">
+    <button onclick="check()"> 입력 값 확인 </button>
+    <script>
+        function check(){
+        var in1= document.getElementsByName('title')[0];
+        var in2= document.querySelector('input[name="message"]');  // 속성선택자 이용 
+            alert(in1.value + "\n" + in2.value);
+        }
+
+    </script>
+
+
+</body>
+</html>

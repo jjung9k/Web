@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS ES6</title>
+    <script>
+
+        // 
+
+        // 1. 변수 선업 키워드 추가 : let, const
+        var a=10;
+        document.write(a + "<br>");
+
+        var a=20;
+        document.write(a + "<br>");
+
+        let b=100;
+        document.write(b + "<br>");
+
+        //let b=200; // 문법적 에러 - 실행 안 됨.
+
+        // 변수여서 값 변경은 가능
+        b=200;
+        document.write(b + "<br>");
+
+        const c=1000;
+        document.write(c + "<br>");
+
+        // const c=2000;// error -- 문법 에러
+
+        // const는 let과 다르게 값을 변경할 수 없는 상수를 만드는 것임
+        // c=2000; // 예외가 발생 함
+        // document.write(c + "<br>");
+
+        // var과의 또 다른 차이점... 변수가 인식되는 범위 차이
+        function aaa() {
+            var n=10;  //지역변수
+            document.write('n: '+ n + "<br>");
+        }
+        aaa();
+        // document.write('n: '+ n + "<br>");
+
+        if(true){
+            var m=10; // 지역변수가 아니고, 전역 변수이다. 그러나 [var키워드는 오직 함수{}만 지역으로 인식함]
+            document.write('m: '+ m + "<br>");
+        }
+        document.write('m: '+ m + "<br>");
+
+        // var age=10;
+        // if(age>20){
+        //     var m=10;
+        //     document.write('m: '+ m + "<br>");
+        // }
+        // document.write('m: '+ m + "<br>");
+
+        // let, const 는 모든 {}를 지역으로 인식함
+        if(true){
+            let m=10; //지역변수
+            document.write( m + "<br>");
+        }
+        ocument.write(m + "<br>");  // 예외 발생
+
+
+        
+
+
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

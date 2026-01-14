@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS ajax network</title>
+</head>
+<body>
+    <h3>회원 가입</h3>
+    
+    <!-- HTML 에서 서버에 사용자 입력데이터를 전송해 주는 요소 form -->
+    <form action="./aaa.php" method="get">
+        <input type="text" placeholder="이름" name="name">     <!--힌트를 보여주는 키워드(placeholder)-->
+        <input type="text" placeholder="이메일" name="email"> 
+        
+        <input type="submit">
+    </form>
+    <!-- 백엔드 php에서 전송된 [이름, 이메일]을 잘 전달 받았는지 응답을 해주면 이를 보여주기-->
+    <hr>
+    <textarea id="ta" cols="50" rows="3"></textarea>
+</body>
+</html>

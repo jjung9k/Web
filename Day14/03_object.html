@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS object</title>
+
+    <script>
+
+        // JS에서 객체의 2가지 종류
+        // 1. 내장객체: document, window, navigation,...etc, Date, String, Number, Array,,,,,
+        
+        var name= 'sam';
+        var agae='20';
+
+        var name1= 'robin';
+        var age1= 23;
+        // 학생 10명의 데이터를 만들어 관리하기 어렵다.
+
+
+        // [이름, 나이] 묶어서 만들자. 객체(멤버변수 2개짜리)
+        var person1= { name:'sam', age:20};
+        var person2= { name:'robin', age:23};
+        var person3= { name: 'park', age:25};
+
+        //[이름, 나이] 출력해 보기
+        document.write('이름 : ' + person1.name + "<br>");
+        document.write('나이 : ' + person1.age + "<br>");
+        document.write('<br>');
+
+        document.write('이름 : ' + person2.name + "<br>");
+        document.write('나이 : ' + person2.age + "<br>");
+        document.write('<br>');
+        // 이런식으로 10명의 학생을 출력하는 코드를 쓰려면 ... 코드가 너무 길어지고 불편함.
+
+        // 특정 기능을 써놓은 코드의 덩어리.. 함수를 이용하여 조금더 효율적으로 코딩
+        function show_person(name, age){
+            document.write('이름 : ' + name + '<br>');
+            document.write('나이 : ' + age + "<br>");
+            document.write('<br>');
+        }
+
+        // 출력기능 함수를 이용하여 객체의 멤버값을 효율적으로 출력하기
+        show_person(person1.name, person1.age);
+        show_person(person2.name, person2.age);
+        show_person(person3.name, person3.age);
+        // 함수를 사용하니 편하기는한데 값을 잘못 전달하면... 객체 덩어리의 멤버값이 잘못 전달될 여지 있음. 실수의 가능성이 있음.
+
+        // 가만보니.. 결국 출력해주는 기능이..person 객체의 멤버값들임.
+        // 즉, person 이 스스로 가지고있는 값이니.. 이 값의 출력기능을 굳이박에 만들지 말고...
+        // 객체가 스스로 본인의 멤버값을 출력하는 기능함수가 내장되어 있으면 더 편하지 않을까?
+        // person.출력해(); 
+        // person2.출력헤();
+
+        // 4번째 학생은 본인 스스로 멤버값[나이, 이름] 출력하는 기능이 있다면,,, 실수의 여지가 줄어들 수 있음.
+        var person4={
+            name: 'hong',    // 속성: 멤버변수
+            age:30,          // 속성: 멤버변수   
+            show: function(){    // 기능: 멤버 함수 - 메소드
+                document.write('이름 : '+ this.name + "<br>");  // this 키워드: 멤버를 지칭하는 키워드)
+                document.write('나이 : ' + this.age + '<br>');
+                document.write('<br>');
+            } 
+        }
+        person4.show();
+        // 객체안에 그 멤버값을 제어하는 기능함수를 넣어 놓으면 더 효율적으로 객체관리가 가능함.
+        // 단, 단점. 5번째 학생 만들려면... 
+        var person5= {
+            name: 'kim',
+            age: 35,
+            show:function() {
+                document.write() // 이런식으로 다시 기능을 설계하는 것은 불편함.
+            }
+        }
+
+        // 그래서 객체를 만들면서 설계하지 말고,,,,
+        // 미리 서례만 해 놓고 필요할때 그 설계대로... 객체를 만들어서 사용하면 더 효율적!
+        // 미리 설계하는 문법. '생성자 함수'라고 부름
+        function Person(name, age){
+            this.name= name; //멤버변수
+            this.age= age;  //멤버함수
+            this.show= function() {
+                document.write('이름: ' + this.name + '<br>');
+                document.write('나이: ' + this.age + '<br>');
+                document.write('<br>');                
+            }
+        }
+
+        //'생성자 함수'를 정의했다고객체가된 것은 아님. 단지 설계임. 객체의 모먕을 설계.
+        //new 키워드를 이용하여 설계대로 객체를 생성하여 멤버들을 사용하면 더 효율적!
+        var p6= new Person('lee', 35);
+        p6.show();
+
+        var p7= new Person('son', 40);
+        p7.show();
+
+        var p8= new Person('aaa', 50);
+        p8.show();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+</head>
+<body>
+    
+</body>
+</html>

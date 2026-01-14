@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Geolocation</title>
+    <script>
+        function aaa(){
+            // BOM 객체 중에 위치정보를 관리하는 객체가 존재함.
+            window.navigator.geolocation.getCurrentPosition(function(position){
+                // position 객체느 위도, 경도 정보를 가지고 있음
+                var lat= position.coords.latitude;   // 위도
+                var lng= position.coords.longitude;  // 경도
+
+                document.getElementById('hh').innerHTML= lat + "," + lng;
+            });
+
+        }
+    </script>
+
+</head>
+<body>
+
+    <button onclick="aaa()">my location</button>
+    <h3 id="hh">위도, 경도</h3>
+    
+</body>
+</html>

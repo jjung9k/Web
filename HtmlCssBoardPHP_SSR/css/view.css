@@ -1,0 +1,48 @@
+/* 공통 스타일 improt */
+@import url(./common.css);
+
+/* 상세글 페이지만의 고유 스타일링 */
+
+.board_view{
+    width: 100%;
+    border-top: 2px solid black;
+    }
+.board_view .title{
+    padding: 2rem 1.5rem;
+    font-size: 2rem;
+    border-bottom: 1px dashed #dddddd;    
+}
+
+.board_view info{
+    padding: 1.5rem 0rem;
+    border-bottom: 1px solid gray;
+}
+
+.board_view .info dl{
+    display: inline-block;
+    padding: 0 2rem;
+
+    border-right: 1px solid #cccccc; 
+}
+.board_view .info dl:last-child{
+    border-right: 0px;    
+}
+
+.board_view .info dl dt, .board_view .info dl dd{
+    display: inline-block;
+    font-size: 1.4rem;    
+}
+.board_view .info dl dd{
+    color: #888888;
+    margin-left: 1rem;    
+}
+
+/* 글 내용 영역 */
+.board_view .content{
+    padding: 1.5rem;
+    font-size: 1.4rem;
+    line-height: 160%;  /*줄 간격*/
+    border-bottom: 2px solid black;
+    min-height: 20rem;
+    
+}

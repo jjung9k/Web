@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3의 배수 확인하기</title>
+    <!-- <script>
+        let userNum = prompt('숫자를 입력하세요');
+        if (userNum !==null) {
+            if(parseInt(userNum) %3 === 0)       // if~else 문 안에 중복 된 if~else 문을 사용하기도 함.
+            alert('3의 배수입니다.');
+        else
+            alert('3의 배수가 아닙니다.');        
+        }
+        else
+            alert('입력이 취소 됐습니다');   
+    </script> -->
+    <script>
+        let sum=0;
+
+        sum += 1;
+        sum += 2;
+        sum += 3;
+        sum += 4;
+        sum += 5;
+
+        document.write(`1월부터 5까지 더하면 ${sum}<br>`);        
+    </script>
+
+    <!-- for문 사용해서 숫자 더하기 -->
+    <script>
+        let total = 0;
+        for(let i =1; i<1001; i++){
+            total += i;
+        }
+        document.write(`1부터 1000까지 더하면 ${total}`);
+        document.write('<br>');
+        document.write('<br>');
+    </script>
+
+    <!-- for 문 2개로 구구단 만들기 -->
+    <style>
+        .dan-box {
+            display: inline-block;
+            vertical-align: top;
+            margin: 10px;
+            padding: 15px;
+            border: 1px solid red;
+            border-radius: 20px;
+            background-color: #f9f9;
+            text-align: center;
+        }
+        h3 {
+            margin-top: 0;
+            color: navy;
+        }
+    </style>
+    <script>
+        for (let i = 1; i <=9; i++){
+            document.write("<div class= 'dan-box'>");    // 각 단이 시작될때 상자를 연다.
+            document.write(`<h3>${i}단</h3>`);
+
+            for(let j = 1; j <=9; j++){
+                document.write(`${i} X ${j} = ${i * j}<br>`);
+            }
+            document.write("</div>");    // 구구단이 끝나면 상자를 닫는다.
+        }
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

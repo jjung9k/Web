@@ -16,39 +16,161 @@
         document.write(10 % 4 + "<br>");
         document.write('<hr>');
 
-        // 2. 비교연산자 < > <= >=  == !=
-        document.write(5 < 10 + "<br>");    // 결과: True (논리값으로 나옴)
-        document.write( 5 > 10 + "<br>");   //
-        document.write( 5 <= 10 + "<br>");  // 
-        document.write( 5 >= 10 + "<br>");  // 
-        document.write( 5 == 10 + "<br>");  // 
-        document.write( 5 != 10 + "<br>");  //
+        // 2. 비교연산자 : < >, <=, >=,  ==, != 
+        document.write( (5 < 10) + "<br>");    // 결과: True (논리값으로 나옴)
+        document.write( (5 > 10) + "<br>");   // false
+        document.write( (5 <= 10) + "<br>");  // true
+        document.write( (5 >= 10) + "<br>");  // false
+        document.write( (5 == 10) + "<br>");  // false
+        document.write( (5 != 10) + "<br>");  // true
         
-         // 도입 된 비교 연산자 === !==
-         document.write( (10 == '10') + "<br>" ); //ture [==는 자료형을 무시하고 생김새... 즉 ] 
-         document.write( (10 === '10') + "<br>");  //false
-         document.write( '<hr>');
-
+         // 새로 도입 된 비교 연산자 === !== [자료형의 타입까지도 비교해 줌]
+        document.write( (10 == '10') + "<br>" ); //true [==는 자료형을 무시하고 생김새... 즉, 값만 비교] 
+        document.write( (10 === '10') + "<br>");  //false
+        //document.write( (10 != '10') + "<br>"); // false
+        document.write( '<hr>');
 
          //3. 논리 연산자 [비교연산자 여러개를 묶을때 사용]
+        var age= 9;
+        var height= 110;
+        if( age< 10 || height< 120 ) { // or 연산자(||) - 둘 중에 하나만 true면 결과도 'true'
+            document.write(' 이 놀이 기구는 이용 불가<br>');
+        }
 
+        if( age< 10 && height< 120 ){ //and 연산자 - 두 조건이 모두 true면 결과도 'true'
+            document.write('모든 놀이기구 이용 불가. 고 홈<br>');
+        }
 
-         //4. 증감 연산자
+        if( !(age>20) ) {  // !== 값이 같지 않다.  !는 결과를 반대로 뒤집는다.
+            document.write('not adult<br>');
+        }
 
-         //5. 복합대입 연산자
+        // 파이썬과 다른 점 하나 더.... 비교 연산자의 연속사용(범위로 사용할때....)
+        age= 35
+        // 나이가 20대 인가?
+        document.write( 20<age<30 ); // fales 여야 하는데,.... true 가 나옴. why?
+        document.write( '<br>');
 
-         //6. 형변환 연산자(기능 함수)
+        // JS 에서 True라는 논리값을 1과 같은 값으로 해석함
+        document.write( true == 1);   // true
+        document.write( '<br>');
+        document.write( true == 0 );  //false
+        document.write( '<br>');
+        document.write( false == 0 ); // true
+        document.write( '<br>');
+        // 그래서 범위 비교 연산할때는 어쩔수 없이 논리연산과 함께 써야 함
+        document.write( age>20 && age<30 ); // 20대 인가?  false
 
+        document.write('<hr>');
 
+        //4. 복합대입 연산자 [대입 + 산술]
+        var num= 10;
+        num+1;  // num을 증가한 것이 아니라, 덧셈 1에 사용
+        document.write(num+'<br>');
+
+        // num 변수 안의 값을 1 증가시키려면, 덧셈결과를 다시 num 변수에 대입해 줘야 함. 
+        num= num+1;  
+        document.write(num+'<br>');  //11
+
+        num= num+3;
+        document.write(num+"<br>");  //14
+
+        // 복합대입연산자로 줄여쓰기
+        num += 3;
+        document.write(num +"<br>");  //17
+
+        num -= 2;
+        document.write(num + "<br>"); //15
         
+        num *= 3;
+        document.write(num+"<br>");  // 45
+        
+        // 5. 증감 연산자 ++, -- (파이썬에는 없는 연산자)
+        // 변수값을 1씩 증가시키는 행위는 매우 자주 사용됨 [대량의 데이터의 인덱스번호를 1씩 증가하면서 데이터를 탐색.]
+        // 이 작업을 +=1 이라고 쓰는게 좀 번거롭다.
 
+        num=10;
+        // num += 1'
+        // num =+ 1: 이런 실수가 많다....
+        num++;  // num += 1과 같은 연산
+        document.write(num + "<br>");  //11
+        num++;
+        document.write(num + "<br>"); //12
 
+        num--;
+        document.write(num +"<br>");  // 11
+        num--;
+        document.write(num + "<br>"); //10  => 연속해서 변수 num-- 사용할 경우, 숫자는 -1로 감소  
+        --num;  // 연산기호를 먼저 써야 됨
+        document.write(num + "<br>");  // 9
 
+        // 연산자 사용 순서에 따른 차이
+        num= 10;
+        var m;
+        m= num++;  // ++ 을 뒤에 붙였을때
+        document.write('m : '+ m + "<br>"); // 10 
+        document.write('num : ' + num + "<br>");  // 11
 
+        num= 10;
+        var m;
+        m= ++num;    // ++ 을 앞에 붙였을때
+        document.write('m : ' + m + "<br>"); // 11 
+        document.write('num : ' + num + "<br>");  // 11
 
+        document.write('<hr>');
 
+         //6. 삼항 연산자 [파이썬의 문법과 다름] 'A' if(age<20) else'B'와 다르게 (조건)? 참일때 값: 거짓일때 값
+        var x=15;
+        var y= (x<10)?'A':'B';
+        document.write(y + "<br>");
+        
+        // 학점 계산기
+        var score=65;
+        var grade= (score>=90)?'A':(score>=80)?'B':(score>=70)?'C':(score>=60)?'D':'F';
+        document.write(grade + "학점 입니다.<br>");
+        
+        document.write('<hr>');
+                  
+         // 7. 형변환 연산자(기능 함수) 파이썬[int(), str(), float(),....] JS는 조금 다름
+        var h=10;
+        document.write(h + "<br>");  // 10 
+        document.write(typeof(h) + "<br>");  // number
+        
+        // number ==> string
+        var s=h + "";  // 숫자 + 문자열 ==> 숫자를 문자열로 변환하여 결합함 [ '10' +'' ==> '10']
+        document.write( s + "<br>");  // 10
+        document.write( typeof(s) +"<br>"); // string
 
+        // string -> number
+        h= parseInt('4');
+        document.write( h + "<br>"); // 4
+        document.write( typeof(h)+"<br>"); // number
 
+        h= parseInt('aa');
+        document.write( h + "<br>");  // NaN(Not a Number)
+        document.write( typeof(h) + "<br>");
+
+        h= parseInt("3.14");
+        document.write( h+ "<br>");  // 3
+        document.write( typeof(h) + "<br>"); 
+
+        h= parseFloat("3.14");
+        document.write( h+ "<br>");  // 3
+        document.write( typeof(h) + "<br>"); 
+
+        document.write('<hr>');
+
+        // 형변환은 어디에 사용하나? 숫자의 자리 수를 알아 내거나.. 사용자 입력 데이터를 숫자로 변환할때 사용.
+        // 모든 GUI 프로그램의 사용자의 숫자키 입력은 실제로는 문자열로 입력됨.
+        // input 요소의 입력을 받아오는 실습을 해야 하지만... 요소제어는 학습전이기에...
+        // 그냥 간단히 prompt()기능으로 사용자 입력을 받아보기
+        age= prompt('나이를 입력하세요 : ', 0); // 프롬프트 다이얼로그에 입력된 글씨를 age변수에 넣어 줌
+        document.write('나이 + 3살 : ' + (age+3) + '<br>'); //'20'+3 ==> '203'
+
+        // 형변환 필요 string -> number
+        age= parseInt(age);
+        document.write('나이 + 3살 : ' + (age+3) + '<br>');
+        
     </script>
 
 </head>
